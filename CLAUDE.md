@@ -60,18 +60,18 @@ src/
     sac/                        # formulário de SAC (página)
     api/
       sac/route.js              # endpoint que recebe e encaminha o formulário
-    (privado)/                    # grupo de rotas reservado para a futura área autenticada
-                                    # NÃO implementar lógica de negócio aqui ainda —
-                                    # apenas manter a pasta/convenção reservada, se criada.
+    (privado)/                    # grupo de rotas da futura área autenticada
+      portal/page.js               # placeholder estrutural — sem conteúdo definido ainda
   components/                   # componentes de UI compartilhados
   lib/                           # utilidades (validação, clients de e-mail, etc.)
+  proxy.js                       # bloqueia /portal (404) até a autenticação existir
 public/                           # assets estáticos (imagens, logo, favicon)
 ```
 
 Princípios:
 - Páginas públicas são estáticas/SSG sempre que possível; usar Server Components por padrão e `"use client"` apenas onde houver interatividade real (formulários, animações).
 - O formulário de SAC deve submeter para uma rota de API própria (`app/api/sac/route.js`) — nunca expor chaves de provedor de e-mail no client.
-- A futura área autenticada deve ser isolada em um route group próprio (ex.: `app/(privado)/`) protegido por `middleware.js`, para que a introdução de auth não exija reestruturar as páginas públicas.
+- A futura área autenticada vive em `app/(privado)/portal/` e é bloqueada por `src/proxy.js` (responde 404 para `/portal` e subrotas) até a autenticação existir. Este projeto usa Next.js 16+, onde o antigo `middleware.js` foi renomeado para `proxy.js` (mesma função, nome do arquivo e da função exportada mudaram — ver `node_modules/next/dist/docs/.../proxy.md`); não recriar um `middleware.js`. `/portal` é um nome provisório — trocar é só renomear a pasta e atualizar o `matcher` em `proxy.js`, em um único lugar. Não adicionar conteúdo/recursos administrativos ali sem que a autenticação real já esteja implementada.
 - Sem backend/banco de dados neste momento além do necessário para processar o SAC (e-mail transacional). Não introduzir banco de dados especulativamente.
 
 ## Convenções
