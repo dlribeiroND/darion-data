@@ -8,13 +8,34 @@ const HIGHLIGHTS = [
   },
   {
     title: "Cases",
-    description: "Resultados reais de operações que escalaram com nossa plataforma.",
+    description: "O tipo de resultado que buscamos entregar para operações como a sua.",
     href: "/cases",
   },
   {
     title: "Tecnologia",
     description: "Como a nossa plataforma agêntica funciona, em linguagem acessível.",
     href: "/tecnologia",
+  },
+];
+
+const STEPS = [
+  {
+    number: "01",
+    title: "Diagnóstico",
+    description:
+      "Mapeamos os processos manuais e os sistemas envolvidos na sua operação para identificar onde a automação gera mais impacto.",
+  },
+  {
+    number: "02",
+    title: "Automação",
+    description:
+      "Configuramos agentes e integrações que executam os fluxos identificados, conectando os sistemas que sua empresa já usa.",
+  },
+  {
+    number: "03",
+    title: "Escala e acompanhamento",
+    description:
+      "Acompanhamos a operação em produção, com espaço para ajustar e ampliar a automação conforme sua empresa cresce.",
   },
 ];
 
@@ -60,6 +81,44 @@ export default function Home() {
               <p className="mt-2 text-sm leading-relaxed text-slate-400">{item.description}</p>
             </Link>
           ))}
+        </div>
+      </section>
+
+      <section className="border-t border-white/10 bg-white/[0.02] py-24">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div className="max-w-2xl">
+            <h2 className="text-3xl font-bold text-white">Como funciona</h2>
+            <p className="mt-4 text-lg leading-relaxed text-slate-400">
+              Do diagnóstico à operação em escala, um processo estruturado para automatizar sua
+              operação com segurança.
+            </p>
+          </div>
+
+          <div className="mt-12 grid gap-8 sm:grid-cols-3">
+            {STEPS.map((step) => (
+              <div key={step.number}>
+                <span className="text-sm font-semibold text-blue-400">{step.number}</span>
+                <h3 className="mt-2 text-lg font-semibold text-white">{step.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-slate-400">{step.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-4xl px-4 py-24 text-center sm:px-6 lg:px-8">
+        <h2 className="text-3xl font-bold text-white">Pronto para escalar sua operação?</h2>
+        <p className="mx-auto mt-4 max-w-xl text-lg leading-relaxed text-slate-400">
+          Fale com a nossa equipe e entenda como a automação de fluxos pode se encaixar na sua
+          empresa.
+        </p>
+        <div className="mt-8">
+          <Link
+            href="/sac"
+            className="rounded-full bg-blue-600 px-8 py-3 text-base font-semibold text-white shadow-[0_0_20px_rgba(37,99,235,0.4)] transition-colors hover:bg-blue-500"
+          >
+            Fale conosco
+          </Link>
         </div>
       </section>
     </>
