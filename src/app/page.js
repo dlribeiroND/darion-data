@@ -1,4 +1,6 @@
 import Link from "next/link";
+import AutomationFlow from "@/components/automation-flow";
+import AutomationPreviewCard from "@/components/automation-preview-card";
 
 const HIGHLIGHTS = [
   {
@@ -103,6 +105,34 @@ export default function Home() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-4 py-24 sm:px-6 lg:px-8">
+        <div className="max-w-2xl">
+          <h2 className="text-3xl font-bold text-white">Da tarefa manual ao resultado</h2>
+          <p className="mt-4 text-lg leading-relaxed text-slate-400">
+            Assim caminha um fluxo depois de automatizado com agentes de IA — do trabalho manual
+            até a operação rodando sozinha, com os sistemas conectados.
+          </p>
+        </div>
+
+        <div className="mt-16">
+          <AutomationFlow />
+        </div>
+      </section>
+
+      <section className="border-t border-white/10 bg-white/[0.02] py-24">
+        <div className="mx-auto grid max-w-6xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
+          <div>
+            <h2 className="text-3xl font-bold text-white">Cada vez mais apoiado por IA</h2>
+            <p className="mt-4 text-lg leading-relaxed text-slate-400">
+              Os agentes não só executam tarefas: eles acompanham a própria execução, sinalizam
+              exceções e dão visibilidade sobre o que está acontecendo em cada etapa do fluxo —
+              em vez de uma automação &ldquo;caixa-preta&rdquo;.
+            </p>
+          </div>
+          <AutomationPreviewCard />
         </div>
       </section>
 
