@@ -60,8 +60,7 @@ export async function POST(request) {
     console.error("[sac] falha ao enviar mensagem:", error.message);
     return NextResponse.json(
       {
-        error:
-          "Não foi possível enviar sua mensagem agora. Tente novamente mais tarde.",
+        error: error.message || "Não foi possível enviar sua mensagem agora. Tente novamente mais tarde.",
       },
       { status: 503 }
     );

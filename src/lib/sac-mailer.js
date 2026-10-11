@@ -16,7 +16,8 @@ export async function sendSacMessage(values) {
     throw new Error("SAC mailer não configurado: defina SAC_MAILER_API_KEY ou RESEND_API_KEY no arquivo de ambiente.");
   }
 
-  const toEmail = process.env.SAC_MAILER_TO || "sac@dariondata.com.br";
+  const fallbackEmail = "diegolribeiro@gmail.com";
+  let toEmail = process.env.SAC_MAILER_TO || fallbackEmail;
   const fromEmail = process.env.SAC_MAILER_FROM || "Darion Data SAC <onboarding@resend.dev>";
 
   const tipoObj = SAC_TYPES.find((t) => t.value === values.tipo);
@@ -137,7 +138,7 @@ export async function sendSacMessage(values) {
 </html>
   `.trim();
 
-  const response = await fetch("https://api.resend.com/emails", {
+  let response = await fetch("https://api.resend.com/emails", {
     method: "POST",
     headers: {
       Authorization: `Bearer ${apiKey}`,
@@ -152,7 +153,27 @@ export async function sendSacMessage(values) {
     }),
   });
 
-  const responseData = await response.json();
+  let responseData = await response.json();
+
+  // Se o Resend recusar por restrição de domínio não verificado, tenta entregar na conta do proprietário
+  if (!response.ok && toEmail !== fallbackEmail && responseData?.message?.includes("only send testing emails")) {
+    console.warn(`[sac-mailer] Domínio ainda não verificado no Resend para '${toEmail}'. Redirecionando entrega para '${fallbackEmail}'...`);
+    response = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${apiKey}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        from: "Darion Data SAC <onboarding@resend.dev>",
+        to: [fallbackEmail],
+        reply_to: values.email,
+        subject,
+        html: htmlBody,
+      }),
+    });
+    responseData = await response.json();
+  }
 
   if (!response.ok) {
     const errorMsg = responseData?.message || responseData?.error || "Falha ao enviar e-mail via Resend.";
