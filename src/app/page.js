@@ -2,155 +2,238 @@ import Link from "next/link";
 import AutomationFlow from "@/components/automation-flow";
 import AutomationPreviewCard from "@/components/automation-preview-card";
 
-const HIGHLIGHTS = [
+const CAPABILITIES = [
   {
-    title: "Soluções",
-    description: "Automação de fluxos e integração de sistemas sob medida.",
+    category: "Foco Principal",
+    title: "Automação de Processos Manuais",
+    subtitle: "Agentes inteligentes que eliminam tarefas repetitivas",
+    description:
+      "Substituímos rotinas manuais, digitação de planilhas, conciliações e triagens operacionais por agentes de software que executam fluxos completos com máxima precisão.",
     href: "/solucoes",
   },
   {
-    title: "Cases",
-    description: "O tipo de resultado que buscamos entregar para operações como a sua.",
-    href: "/cases",
+    category: "Produtividade Humana",
+    title: "Potencialização do Profissional",
+    subtitle: "Menos esforço mecânico, mais inteligência estratégica",
+    description:
+      "Sua equipe deixa de perder horas em trabalhos burocráticos e ganha tempo para analisar dados, atender clientes e tomar decisões de alto impacto.",
+    href: "/solucoes",
   },
   {
-    title: "Tecnologia",
-    description: "Como a nossa plataforma agêntica funciona, em linguagem acessível.",
-    href: "/tecnologia",
+    category: "Interconexão",
+    title: "Integração Contínua de Sistemas",
+    subtitle: "ERPs, CRMs e ferramentas conversando em tempo real",
+    description:
+      "Conectamos os sistemas que você já utiliza (como TOTVS, SAP, Salesforce, APIs e bancos de dados) sem retrabalho manual e sem necessidade de troca de softwares.",
+    href: "/solucoes",
+  },
+  {
+    category: "Infraestrutura Segura",
+    title: "Redes & Cibersegurança Corporativa",
+    subtitle: "Conectividade resiliente e proteção perimetral",
+    description:
+      "Garantimos que suas automações e ferramentas rodem sobre redes de alta disponibilidade e proteção avançada de borda, adotando padrões do ecossistema Fortinet e Zero Trust.",
+    href: "/seguranca",
   },
 ];
 
 const STEPS = [
   {
     number: "01",
-    title: "Diagnóstico",
+    title: "Mapeamento dos Gargalos Manuais",
     description:
-      "Mapeamos os processos manuais e os sistemas envolvidos na sua operação para identificar onde a automação gera mais impacto.",
+      "Identificamos onde sua equipe perde mais tempo em tarefas operacionais repetitivas e quais sistemas precisam ser interligados para otimizar o fluxo de trabalho.",
   },
   {
     number: "02",
-    title: "Automação",
+    title: "Configuração de Agentes & Integrações",
     description:
-      "Configuramos agentes e integrações que executam os fluxos identificados, conectando os sistemas que sua empresa já usa.",
+      "Implementamos agentes autônomos adaptados às suas regras de negócio, integrando suas ferramentas atuais com pontos de validação humana onde for necessário.",
   },
   {
     number: "03",
-    title: "Escala e acompanhamento",
+    title: "Operação Ágil, Segura & Escalável",
     description:
-      "Acompanhamos a operação em produção, com espaço para ajustar e ampliar a automação conforme sua empresa cresce.",
+      "Acompanhamos a operação em produção sobre uma infraestrutura protegida e estável, liberando seus profissionais para acelerar o crescimento da empresa.",
   },
 ];
 
 export default function Home() {
   return (
-    <>
-      <section className="mx-auto max-w-4xl px-4 py-24 text-center sm:px-6 lg:px-8">
-        <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl">
-          Automatize fluxos, integre sistemas e{" "}
-          <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
-            escale sua operação
+    <div className="space-y-24 pb-24">
+      {/* Hero Section Estilo Apple */}
+      <section className="mx-auto max-w-4xl px-4 pt-20 text-center sm:px-6 lg:px-8">
+        <div className="inline-flex items-center gap-2 rounded-full border border-black/[0.08] bg-white px-3.5 py-1 text-xs font-medium text-[#0071e3] shadow-xs">
+          <span>Automação Agêntica de Processos • Eficiência & Tempo Otimizado</span>
+        </div>
+
+        <h1 className="mt-6 text-4xl font-semibold tracking-tight text-[#1d1d1f] sm:text-5xl lg:text-6xl">
+          Automatize processos.
+          <br />
+          <span className="bg-gradient-to-r from-[#0071e3] via-[#0077ed] to-[#43b5ff] bg-clip-text text-transparent">
+            Potencialize seu time.
           </span>
+          <br />
+          Escale sua operação com segurança.
         </h1>
-        <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-slate-400">
-          À medida que sua empresa evolui, processos manuais podem limitar a produtividade.
-          Temos expertise para automatizar fluxos e integrar sistemas com uma plataforma agêntica.
+
+        <p className="mx-auto mt-6 max-w-2xl text-lg font-normal leading-relaxed text-[#6e6e73]">
+          À medida que sua empresa evolui, rotinas manuais e retrabalhos limitam a produtividade. A Darion Data desenvolve <strong>agentes inteligentes</strong> e <strong>integrações de sistemas</strong> para eliminar tarefas repetitivas, devolvendo tempo valioso para que seus profissionais foquem no que realmente gera valor — tudo sustentado por uma infraestrutura de redes e segurança resiliente.
         </p>
-        <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-          <Link
-            href="/sac"
-            className="rounded-full bg-blue-600 px-8 py-3 text-base font-semibold text-white shadow-[0_0_20px_rgba(37,99,235,0.4)] transition-colors hover:bg-blue-500"
-          >
-            Fale conosco
-          </Link>
+
+        <div className="mt-8 flex items-center justify-center">
           <Link
             href="/solucoes"
-            className="rounded-full border border-white/15 px-8 py-3 text-base font-semibold text-slate-200 transition-colors hover:border-white/30 hover:bg-white/5"
+            className="rounded-full bg-[#0071e3] px-8 py-3 text-sm font-medium text-white shadow-sm transition-all hover:bg-[#0077ed] active:scale-[0.98]"
           >
-            Conhecer soluções
+            Conhecer soluções de automação
           </Link>
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-4 pb-24 sm:px-6 lg:px-8">
-        <div className="grid gap-6 sm:grid-cols-3">
-          {HIGHLIGHTS.map((item) => (
+      {/* Bento Grid Apple: Apresentação Equilibrada */}
+      <section className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div className="text-center">
+          <span className="text-xs font-semibold uppercase tracking-wider text-[#0071e3]">
+            Nossas Frentes de Atuação
+          </span>
+          <h2 className="mt-2 text-3xl font-semibold tracking-tight text-[#1d1d1f]">
+            Tecnologia que coloca o profissional no centro da inteligência
+          </h2>
+        </div>
+
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {CAPABILITIES.map((item) => (
             <Link
-              key={item.href}
+              key={item.title}
               href={item.href}
-              className="rounded-xl border border-white/10 bg-white/[0.03] p-6 transition-colors hover:border-blue-500/40 hover:bg-white/[0.06]"
+              className="group flex flex-col justify-between rounded-3xl border border-black/[0.06] bg-white p-7 shadow-[0_4px_20px_rgba(0,0,0,0.03)] transition-all hover:-translate-y-1 hover:shadow-[0_16px_36px_rgba(0,0,0,0.08)]"
             >
-              <h2 className="text-lg font-semibold text-white">{item.title}</h2>
-              <p className="mt-2 text-sm leading-relaxed text-slate-400">{item.description}</p>
+              <div>
+                <span className="text-[11px] font-semibold uppercase tracking-wider text-[#0071e3]">
+                  {item.category}
+                </span>
+                <h3 className="mt-2 text-xl font-semibold tracking-tight text-[#1d1d1f] group-hover:text-[#0071e3] transition-colors">
+                  {item.title}
+                </h3>
+                <p className="mt-1 text-xs font-medium text-[#86868b]">{item.subtitle}</p>
+                <p className="mt-4 text-xs leading-relaxed text-[#6e6e73]">
+                  {item.description}
+                </p>
+              </div>
+
+              <div className="mt-6 flex items-center gap-1 text-xs font-semibold text-[#0071e3] group-hover:underline">
+                <span>Ver detalhes</span>
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" className="h-3 w-3 transition-transform group-hover:translate-x-0.5">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 3l5 5-5 5" />
+                </svg>
+              </div>
             </Link>
           ))}
         </div>
       </section>
 
-      <section className="border-t border-white/10 bg-white/[0.02] py-24">
+      {/* Seção Fluxo Unificado */}
+      <section className="bg-[#f5f5f7] py-24">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <div className="max-w-2xl">
-            <h2 className="text-3xl font-bold text-white">Como funciona</h2>
-            <p className="mt-4 text-lg leading-relaxed text-slate-400">
-              Do diagnóstico à operação em escala, um processo estruturado para automatizar sua
-              operação com segurança.
+          <div className="mx-auto max-w-3xl text-center">
+            <span className="text-xs font-semibold uppercase tracking-wider text-[#0071e3]">
+              Transformação Operacional
+            </span>
+            <h2 className="mt-2 text-3xl font-semibold tracking-tight text-[#1d1d1f]">
+              Do esforço manual repetitivo à alta performance do seu time
+            </h2>
+            <p className="mt-4 text-base leading-relaxed text-[#6e6e73]">
+              Veja como a automação agêntica absorve a carga mecânica e capacita o profissional a produzir mais com menos atrito.
             </p>
           </div>
 
-          <div className="mt-12 grid gap-8 sm:grid-cols-3">
+          <div className="mt-16">
+            <AutomationFlow />
+          </div>
+        </div>
+      </section>
+
+      {/* Seção Produtividade / Widget Apple */}
+      <section className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div className="grid items-center gap-12 lg:grid-cols-2">
+          <div>
+            <span className="text-xs font-semibold uppercase tracking-wider text-[#0071e3]">
+              Otimização de Tempo Real
+            </span>
+            <h2 className="mt-3 text-3xl font-semibold tracking-tight text-[#1d1d1f] sm:text-4xl">
+              Mais tempo para pensar, criar e evoluir seu negócio.
+            </h2>
+            <p className="mt-5 text-base leading-relaxed text-[#6e6e73]">
+              Quando processos manuais são confiados a agentes de software, sua empresa elimina erros humanos de digitação, reduz o tempo de resposta aos clientes e multiplica a capacidade operacional sem sobrecarregar colaboradores.
+            </p>
+            <p className="mt-4 text-base leading-relaxed text-[#6e6e73]">
+              E para que essa operação rode com estabilidade ininterrupta, integramos seus sistemas a uma base segura de redes e conectividade — com proteção perimetral inspirada em tecnologias de ponta como as soluções Fortinet.
+            </p>
+
+            <div className="mt-8 flex flex-wrap gap-4">
+              <Link
+                href="/solucoes"
+                className="group inline-flex items-center gap-1.5 text-sm font-semibold text-[#0071e3] hover:underline"
+              >
+                Conheça como automatizamos processos
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" className="h-3 w-3 transition-transform group-hover:translate-x-0.5">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 3l5 5-5 5" />
+                </svg>
+              </Link>
+            </div>
+          </div>
+
+          <div>
+            <AutomationPreviewCard />
+          </div>
+        </div>
+      </section>
+
+      {/* Metodologia de Implementação */}
+      <section className="bg-white py-24 border-t border-black/[0.06]">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-2xl text-center">
+            <span className="text-xs font-semibold uppercase tracking-wider text-[#0071e3]">
+              Como Trabalhamos
+            </span>
+            <h2 className="mt-2 text-3xl font-semibold tracking-tight text-[#1d1d1f]">
+              Um método claro para destravar a produtividade da sua empresa
+            </h2>
+            <p className="mt-4 text-base leading-relaxed text-[#6e6e73]">
+              Do diagnóstico à operação contínua, desenhamos a solução perfeita para a sua realidade.
+            </p>
+          </div>
+
+          <div className="mt-14 grid gap-8 sm:grid-cols-3">
             {STEPS.map((step) => (
-              <div key={step.number}>
-                <span className="text-sm font-semibold text-blue-400">{step.number}</span>
-                <h3 className="mt-2 text-lg font-semibold text-white">{step.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-slate-400">{step.description}</p>
+              <div key={step.number} className="rounded-3xl border border-black/[0.06] bg-[#fbfbfd] p-8 shadow-xs">
+                <span className="text-sm font-bold text-[#0071e3]">{step.number}</span>
+                <h3 className="mt-3 text-lg font-semibold text-[#1d1d1f]">{step.title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-[#6e6e73]">{step.description}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-4 py-24 sm:px-6 lg:px-8">
-        <div className="max-w-2xl">
-          <h2 className="text-3xl font-bold text-white">Da tarefa manual ao resultado</h2>
-          <p className="mt-4 text-lg leading-relaxed text-slate-400">
-            Assim caminha um fluxo depois de automatizado com agentes de IA — do trabalho manual
-            até a operação rodando sozinha, com os sistemas conectados.
-          </p>
-        </div>
-
-        <div className="mt-16">
-          <AutomationFlow />
-        </div>
-      </section>
-
-      <section className="border-t border-white/10 bg-white/[0.02] py-24">
-        <div className="mx-auto grid max-w-6xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
-          <div>
-            <h2 className="text-3xl font-bold text-white">Cada vez mais apoiado por IA</h2>
-            <p className="mt-4 text-lg leading-relaxed text-slate-400">
-              Os agentes não só executam tarefas: eles acompanham a própria execução, sinalizam
-              exceções e dão visibilidade sobre o que está acontecendo em cada etapa do fluxo —
-              em vez de uma automação &ldquo;caixa-preta&rdquo;.
-            </p>
-          </div>
-          <AutomationPreviewCard />
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-4xl px-4 py-24 text-center sm:px-6 lg:px-8">
-        <h2 className="text-3xl font-bold text-white">Pronto para escalar sua operação?</h2>
-        <p className="mx-auto mt-4 max-w-xl text-lg leading-relaxed text-slate-400">
-          Fale com a nossa equipe e entenda como a automação de fluxos pode se encaixar na sua
-          empresa.
+      {/* CTA Final Apple Style */}
+      <section className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
+        <h2 className="text-3xl font-semibold tracking-tight text-[#1d1d1f] sm:text-4xl">
+          Pronto para dar superpoderes à sua equipe?
+        </h2>
+        <p className="mx-auto mt-4 max-w-xl text-base text-[#6e6e73]">
+          Converse conosco e descubra quais processos podem ser automatizados para liberar o verdadeiro potencial da sua operação.
         </p>
-        <div className="mt-8">
+        <div className="mt-8 flex justify-center gap-4">
           <Link
             href="/sac"
-            className="rounded-full bg-blue-600 px-8 py-3 text-base font-semibold text-white shadow-[0_0_20px_rgba(37,99,235,0.4)] transition-colors hover:bg-blue-500"
+            className="rounded-full bg-[#0071e3] px-8 py-3 text-sm font-semibold text-white shadow-sm transition-all hover:bg-[#0077ed]"
           >
             Fale conosco
           </Link>
         </div>
       </section>
-    </>
+    </div>
   );
 }

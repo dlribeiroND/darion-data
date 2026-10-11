@@ -15,9 +15,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Darion Data",
+  title: "Darion Data | Automação de Processos, Redes & Cibersegurança",
   description:
-    "Automatize fluxos, integre sistemas e escale sua operação com uma plataforma agêntica.",
+    "Automatize processos manuais, integre sistemas e potencialize sua equipe com agentes inteligentes — sustentados por redes de alta disponibilidade e cibersegurança.",
 };
 
 export default function RootLayout({ children }) {
@@ -26,7 +26,7 @@ export default function RootLayout({ children }) {
       lang="pt-BR"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="flex min-h-full flex-col bg-slate-950 text-slate-100">
+      <body className="flex min-h-full flex-col bg-[#fbfbfd] text-[#1d1d1f] selection:bg-[#0071e3]/20 selection:text-[#0071e3]">
         <TechBackground />
         <SiteHeader />
         <main className="flex-1">{children}</main>

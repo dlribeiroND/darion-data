@@ -1,47 +1,27 @@
-// Textura discreta atrás de todo o site: grid + halos + feixes de dados
-// (leve nod ao "efeito matrix", sem exagerar). Puramente decorativo
-// (aria-hidden) e parado quando o usuário pede menos movimento (motion-safe:).
-const STREAMS = [
-  { left: "6%", height: "8rem", duration: "6s", delay: "0s", tone: "via-cyan-400/70" },
-  { left: "18%", height: "5rem", duration: "8s", delay: "2.5s", tone: "via-blue-300/60" },
-  { left: "30%", height: "10rem", duration: "7s", delay: "1s", tone: "via-cyan-300/60" },
-  { left: "44%", height: "6rem", duration: "9s", delay: "3.5s", tone: "via-blue-400/70" },
-  { left: "58%", height: "9rem", duration: "6.5s", delay: "0.8s", tone: "via-cyan-400/60" },
-  { left: "70%", height: "5rem", duration: "8.5s", delay: "4s", tone: "via-blue-300/70" },
-  { left: "82%", height: "7rem", duration: "7.5s", delay: "1.8s", tone: "via-cyan-300/70" },
-  { left: "93%", height: "6rem", duration: "9.5s", delay: "3s", tone: "via-blue-400/60" },
-];
+// Textura clean e luminosa inspirada no design da Apple:
+// Iluminação suave de estúdio, grid sutil de micro-linhas e halos difusos translúcidos.
+// Puramente decorativo (aria-hidden) com respeito a prefers-reduced-motion.
 
 export default function TechBackground() {
   return (
-    <div aria-hidden="true" className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
+    <div aria-hidden="true" className="pointer-events-none fixed inset-0 -z-10 overflow-hidden bg-[#fbfbfd]">
+      {/* Top ambient illumination glow */}
+      <div className="absolute inset-x-0 -top-40 h-[36rem] bg-gradient-to-b from-blue-100/40 via-sky-50/20 to-transparent blur-3xl" />
+
+      {/* Subtle technical micro-grid pattern */}
       <div
-        className="absolute inset-0 opacity-[0.32] [mask-image:radial-gradient(ellipse_at_top,black_15%,transparent_75%)]"
+        className="absolute inset-0 opacity-[0.4] [mask-image:radial-gradient(ellipse_at_top,black_20%,transparent_80%)]"
         style={{
           backgroundImage:
-            "linear-gradient(rgba(56,189,248,0.15) 1px, transparent 1px), linear-gradient(90deg, rgba(56,189,248,0.15) 1px, transparent 1px)",
-          backgroundSize: "44px 44px",
+            "linear-gradient(rgba(0,113,227,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0,113,227,0.05) 1px, transparent 1px)",
+          backgroundSize: "48px 48px",
         }}
       />
 
-      <div className="motion-safe:animate-[drift-slow_18s_ease-in-out_infinite] absolute -top-32 -left-24 h-[32rem] w-[32rem] rounded-full bg-blue-600/10 blur-[110px]" />
-      <div className="motion-safe:animate-[drift-slow_22s_ease-in-out_infinite_reverse] absolute -right-24 top-1/3 h-[28rem] w-[28rem] rounded-full bg-cyan-500/10 blur-[110px]" />
-      <div className="motion-safe:animate-[drift-slow_20s_ease-in-out_infinite] absolute bottom-[-10rem] left-1/3 h-[26rem] w-[26rem] rounded-full bg-blue-500/10 blur-[110px]" />
-
-      <div className="absolute inset-0 opacity-60">
-        {STREAMS.map((stream, index) => (
-          <span
-            key={index}
-            className={`decorative-motion absolute top-0 w-px bg-gradient-to-b from-transparent ${stream.tone} to-transparent`}
-            style={{
-              left: stream.left,
-              height: stream.height,
-              animation: `data-stream ${stream.duration} linear infinite`,
-              animationDelay: stream.delay,
-            }}
-          />
-        ))}
-      </div>
+      {/* Soft Apple sapphire diffuse orbs */}
+      <div className="motion-safe:animate-[drift-slow_24s_ease-in-out_infinite] absolute -top-24 -left-20 h-[36rem] w-[36rem] rounded-full bg-blue-400/[0.08] blur-[120px]" />
+      <div className="motion-safe:animate-[drift-slow_28s_ease-in-out_infinite_reverse] absolute -right-24 top-1/4 h-[32rem] w-[32rem] rounded-full bg-cyan-400/[0.06] blur-[120px]" />
+      <div className="motion-safe:animate-[drift-slow_26s_ease-in-out_infinite] absolute bottom-10 left-1/3 h-[30rem] w-[30rem] rounded-full bg-indigo-300/[0.05] blur-[120px]" />
     </div>
   );
 }
