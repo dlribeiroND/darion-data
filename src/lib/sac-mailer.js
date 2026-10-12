@@ -11,7 +11,10 @@ function escapeHtml(str) {
 }
 
 export async function sendSacMessage(values) {
-  const apiKey = process.env.SAC_MAILER_API_KEY || process.env.RESEND_API_KEY;
+  const apiKey =
+    process.env.SAC_MAILER_API_KEY ||
+    process.env.RESEND_API_KEY ||
+    process.env.RESEND_APT_KEY;
   if (!apiKey) {
     throw new Error("SAC mailer não configurado: defina SAC_MAILER_API_KEY ou RESEND_API_KEY no arquivo de ambiente.");
   }

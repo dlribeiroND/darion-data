@@ -2,6 +2,8 @@ import { NextResponse } from "next/server";
 import { validateSacForm } from "@/lib/sac-validation";
 import { sendSacMessage } from "@/lib/sac-mailer";
 
+export const dynamic = "force-dynamic";
+
 const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
 const RATE_LIMIT_MAX_REQUESTS = 5;
 
