@@ -1,59 +1,86 @@
 import Link from "next/link";
 
 export const metadata = {
-  title: "Governança de IA & Shadow AI | Darion Data",
+  title: "Governança de IA e Shadow AI",
   description:
-    "Consultoria especializada para mapear e orientar o uso de ferramentas de IA nas organizações, com foco em segurança de dados, propriedade intelectual e LGPD.",
+    "Mapeamento e governança de Shadow AI: ferramentas em uso, proteção de dados, alternativas aprovadas e regras práticas para a equipe.",
+  alternates: {
+    canonical: "https://www.dariondata.com.br/shadow-ai",
+  },
+  openGraph: {
+    title: "Governança de IA e Shadow AI | Darion Data",
+    description:
+      "Mapeamento e governança de Shadow AI: ferramentas em uso, proteção de dados, alternativas aprovadas e regras práticas para a equipe.",
+    url: "https://www.dariondata.com.br/shadow-ai",
+    siteName: "Darion Data",
+    locale: "pt_BR",
+    type: "website",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Darion Data",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Governança de IA e Shadow AI | Darion Data",
+    description:
+      "Mapeamento e governança de Shadow AI: ferramentas em uso, proteção de dados, alternativas aprovadas e regras práticas para a equipe.",
+    images: ["/og-image.png"],
+  },
 };
 
 const COMMON_CHANNELS = [
-  "Assistentes e geradores de texto ou código acessados com contas pessoais.",
-  "Extensões, complementos e barras laterais instaladas no navegador.",
-  "Recursos de IA recentemente incorporados a sistemas e plataformas já contratados.",
-  "Automações, scripts e agentes criados de forma descentralizada pelas áreas de negócio.",
-  "Upload de documentos internos, planilhas financeiras e contratos em ferramentas externas.",
+  "Assistentes acessados com conta pessoal.",
+  "Extensões de navegador.",
+  "Recursos novos de IA dentro de sistemas que a empresa já usa.",
+  "Automações criadas pelas áreas de negócio.",
+  "Documentos e planilhas enviados a ferramentas externas.",
 ];
 
-const WHY_IT_MATTERS = [
-  "Informações confidenciais ou dados pessoais de clientes e colaboradores saindo do perímetro corporativo.",
-  "Exposição involuntária de segredos de negócio, estratégias comerciais e propriedade intelectual.",
-  "Violação de cláusulas de acordos de confidencialidade (NDA) firmados com clientes e parceiros.",
-  "Descumprimento de obrigações da Lei Geral de Proteção de Dados (LGPD).",
-  "Decisões críticas de negócio tomadas com base em saídas geradas por IA sem registro, revisão ou rastreabilidade.",
+const WHAT_IS_AT_STAKE = [
+  "Informação de clientes e dados pessoais saindo da empresa.",
+  "Segredos de negócio.",
+  "Compromissos de confidencialidade.",
+  "A LGPD.",
+  "Decisões tomadas com respostas de IA que ninguém registra.",
 ];
 
 const QUESTIONS_ANSWERED = [
-  "Quais ferramentas e serviços de IA estão em uso efetivo na empresa hoje?",
-  "Que categoria de dados e informações corporativas chega até essas ferramentas?",
-  "Quem tomou a iniciativa de adoção e qual dor operacional estava tentando solucionar?",
-  "Existe uma alternativa homologada, segura e eficiente que atenda a essa necessidade?",
-  "O que a política interna da organização estabelece a respeito, e os colaboradores a conhecem?",
+  "Que ferramentas estão em uso?",
+  "Que tipo de dado chega a elas?",
+  "O que levou as pessoas a usá-las?",
+  "Existe uma alternativa aprovada que resolva o mesmo problema?",
+  "O que a política da empresa diz, e as pessoas conhecem?",
 ];
 
 const DELIVERABLES = [
   {
-    title: "Mapeamento das ferramentas e usos",
-    description: "Inventário claro das soluções em uso, indicando áreas demandantes e casos práticos de aplicação.",
+    title: "Mapa das ferramentas e usos",
+    description: "Inventário das soluções e das áreas onde elas apareceram.",
   },
   {
-    title: "Classificação de riscos",
-    description: "Avaliação do nível de exposição de acordo com a sensibilidade dos dados manipulados e a finalidade.",
+    title: "Risco por tipo de dado e por área",
+    description: "Avaliação do nível de exposição de acordo com a sensibilidade das informações.",
   },
   {
-    title: "Política de uso aceitável",
-    description: "Diretrizes práticas, transparentes e realistas sobre o que é permitido, condicionado ou vedado.",
+    title: "Proposta de política de uso aceitável",
+    description: "Regras claras e práticas que a equipe consiga seguir no dia a dia.",
   },
   {
-    title: "Alternativas homologadas e controles técnicos",
-    description: "Indicação de plataformas autorizadas e parametrização de controles no firewall e na rede.",
+    title: "Alternativas aprovadas e controles na rede",
+    description: "Indicação de ferramentas homologadas e parametrização de controles técnicos.",
   },
   {
-    title: "Plano de comunicação e conscientização",
-    description: "Orientações para que as equipes compreendam os riscos sem travar a produtividade cotidiana.",
+    title: "Plano de conversa com as equipes",
+    description: "Diálogo transparente para orientar os colaboradores sem travar o trabalho.",
   },
   {
-    title: "Acompanhamento e evolução",
-    description: "Recomendações periódicas para revisão dos controles à medida que novas ferramentas surgem no mercado.",
+    title: "Revisão periódica",
+    description: "Acompanhamento regular para atualizar regras conforme surgem novas ferramentas.",
   },
 ];
 
@@ -63,7 +90,7 @@ export default function ShadowAiPage() {
       {/* Header */}
       <section className="mx-auto max-w-4xl px-4 pt-16 text-center sm:px-6 lg:px-8">
         <div className="inline-flex items-center gap-2 rounded-full border border-black/[0.08] bg-white px-3.5 py-1 text-xs font-medium text-[#0071e3] shadow-xs">
-          <span>Consultoria de Governança · Shadow AI</span>
+          <span>Governança · Shadow AI</span>
         </div>
 
         <h1 className="mt-6 text-4xl font-semibold tracking-tight text-[#1d1d1f] sm:text-5xl lg:text-6xl">
@@ -75,7 +102,7 @@ export default function ShadowAiPage() {
         </h1>
 
         <p className="mx-auto mt-6 max-w-3xl text-base sm:text-lg leading-relaxed text-[#6e6e73]">
-          Hoje a inteligência artificial entra na empresa por muitas portas: a ferramenta que alguém testou com a conta pessoal, a extensão de navegador, o recurso novo que apareceu num sistema que a empresa já usa. Quase sempre com boa intenção. O que costuma faltar é saber <strong>o que está sendo usado, com que dados, e sob quais regras</strong>. Esse é o ponto que a consultoria da Darion Data aborda.
+          Ninguém decidiu usar IA escondido. Alguém teve prazo apertado, achou uma ferramenta que ajudava e seguiu em frente. Só que, somadas, essas decisões individuais mexem com dados da empresa, e a TI normalmente não fica sabendo.
         </p>
 
         <div className="mt-8 flex justify-center">
@@ -83,39 +110,30 @@ export default function ShadowAiPage() {
             href="/contato?assunto=shadow-ai"
             className="rounded-full bg-[#0071e3] px-8 py-3 text-sm font-medium text-white shadow-sm transition-all hover:bg-[#0077ed]"
           >
-            Conversar sobre Shadow AI
+            Conte o seu cenário
           </Link>
         </div>
       </section>
 
-      {/* O que é Shadow AI & Onde aparece */}
+      {/* O que é & Onde aparece */}
       <section className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="grid gap-8 lg:grid-cols-2">
           {/* O que é */}
           <div className="rounded-3xl border border-black/[0.08] bg-white p-8 sm:p-10 shadow-sm flex flex-col justify-between">
             <div>
-              <span className="text-xs font-semibold uppercase tracking-wider text-[#0071e3]">
-                Definição
-              </span>
-              <h2 className="mt-2 text-2xl font-semibold text-[#1d1d1f]">
-                O que é Shadow AI?
+              <h2 className="text-2xl font-semibold text-[#1d1d1f]">
+                O que é
               </h2>
               <p className="mt-4 text-sm leading-relaxed text-[#6e6e73]">
-                É o uso de ferramentas, modelos, recursos e extensões de inteligência artificial sem o conhecimento, homologação técnica ou gestão formal da equipe de TI e dos responsáveis pela proteção de dados corporativos.
-              </p>
-              <p className="mt-3 text-sm leading-relaxed text-[#6e6e73]">
-                Não se trata de má-fé dos colaboradores, mas de profissionais buscando agilidade para cumprir suas metas cotidianas sem contar com canais oficiais definidos.
+                Uso de ferramentas, extensões e recursos de IA fora do conhecimento da TI e de quem cuida dos dados. Quase sempre nasce de boa intenção.
               </p>
             </div>
           </div>
 
-          {/* Onde costuma aparecer */}
+          {/* Onde aparece */}
           <div className="rounded-3xl border border-black/[0.08] bg-[#fafafc] p-8 sm:p-10">
-            <span className="text-xs font-semibold uppercase tracking-wider text-[#0071e3]">
-              Vetores Comuns
-            </span>
-            <h2 className="mt-2 text-2xl font-semibold text-[#1d1d1f]">
-              Onde costuma aparecer
+            <h2 className="text-2xl font-semibold text-[#1d1d1f]">
+              Onde aparece
             </h2>
             <div className="mt-6 space-y-3">
               {COMMON_CHANNELS.map((channel, idx) => (
@@ -131,31 +149,25 @@ export default function ShadowAiPage() {
         </div>
       </section>
 
-      {/* Por que merece atenção */}
+      {/* O que está em jogo */}
       <section className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="rounded-3xl border border-black/[0.08] bg-white p-8 sm:p-12 shadow-sm">
           <div className="max-w-2xl">
-            <span className="text-xs font-semibold uppercase tracking-wider text-[#0071e3]">
-              Gestão de Riscos
-            </span>
-            <h2 className="mt-2 text-2xl sm:text-3xl font-semibold tracking-tight text-[#1d1d1f]">
-              Por que merece atenção da diretoria e da TI
+            <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-[#1d1d1f]">
+              O que está em jogo
             </h2>
-            <p className="mt-2 text-sm text-[#6e6e73]">
-              Riscos reais e qualitativos gerados pelo uso desordenado de ferramentas externas:
-            </p>
           </div>
 
-          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {WHY_IT_MATTERS.map((item, idx) => (
+          <div className="mt-8 grid gap-3 sm:grid-cols-2">
+            {WHAT_IS_AT_STAKE.map((item, idx) => (
               <div
                 key={idx}
-                className="rounded-2xl border border-black/[0.06] bg-[#fafafc] p-5 text-xs text-[#515154]"
+                className="flex items-start gap-3 rounded-2xl border border-black/[0.06] bg-[#fafafc] p-4 text-xs text-[#424245]"
               >
-                <span className="text-sm font-semibold text-[#1d1d1f] block mb-2">
-                  Ponto de atenção {idx + 1}
+                <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#0071e3]/10 text-[10px] font-bold text-[#0071e3]">
+                  ✓
                 </span>
-                <p className="leading-relaxed">{item}</p>
+                <span className="leading-relaxed">{item}</span>
               </div>
             ))}
           </div>
@@ -165,57 +177,44 @@ export default function ShadowAiPage() {
       {/* Perguntas que ajudamos a responder */}
       <section className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="rounded-3xl border border-black/[0.08] bg-[#f5f5f7] p-8 sm:p-12">
-          <div className="max-w-3xl">
-            <span className="text-xs font-semibold uppercase tracking-wider text-[#0071e3]">
-              Diagnóstico Corporativo
-            </span>
-            <h2 className="mt-2 text-2xl sm:text-3xl font-semibold tracking-tight text-[#1d1d1f]">
-              Perguntas que ajudamos sua empresa a responder
+          <div className="max-w-2xl">
+            <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-[#1d1d1f]">
+              Perguntas que ajudamos a responder:
             </h2>
-            <p className="mt-2 text-sm text-[#6e6e73]">
-              Buscamos clareza operacional para que a organização tenha controle sem travar a inovação:
-            </p>
           </div>
 
-          <div className="mt-8 grid gap-3 sm:grid-cols-2">
-            {QUESTIONS_ANSWERED.map((q, idx) => (
+          <div className="mt-8 space-y-3">
+            {QUESTIONS_ANSWERED.map((question, idx) => (
               <div
                 key={idx}
-                className="rounded-2xl border border-black/[0.06] bg-white p-4 text-xs font-medium text-[#1d1d1f]"
+                className="flex items-start gap-3 rounded-2xl border border-black/[0.06] bg-white p-4 text-xs text-[#424245] shadow-2xs"
               >
-                <span className="text-[#0071e3] mr-2">Q{idx + 1}.</span>
-                {q}
+                <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#0071e3]/10 text-[10px] font-bold text-[#0071e3]">
+                  ?
+                </span>
+                <span className="leading-relaxed font-medium">{question}</span>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* O que a consultoria entrega */}
+      {/* O que você recebe */}
       <section className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="text-center">
-          <span className="text-xs font-semibold uppercase tracking-wider text-[#0071e3]">
-            Escopo Prático
-          </span>
-          <h2 className="mt-2 text-3xl font-semibold tracking-tight text-[#1d1d1f]">
-            O que a consultoria entrega
+          <h2 className="text-3xl font-semibold tracking-tight text-[#1d1d1f]">
+            O que você recebe
           </h2>
-          <p className="mx-auto mt-2 max-w-xl text-sm text-[#6e6e73]">
-            Entregáveis tangíveis para estruturar a governança de IA com sustentação técnica.
-          </p>
         </div>
 
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {DELIVERABLES.map((deliv, idx) => (
             <div
               key={idx}
-              className="rounded-3xl border border-black/[0.08] bg-white p-6 shadow-xs flex flex-col justify-between"
+              className="rounded-3xl border border-black/[0.08] bg-white p-7 shadow-xs flex flex-col justify-between"
             >
               <div>
-                <span className="text-xs font-semibold text-[#0071e3]">
-                  0{idx + 1}
-                </span>
-                <h3 className="mt-2 text-base font-semibold text-[#1d1d1f]">
+                <h3 className="text-base font-semibold text-[#1d1d1f]">
                   {deliv.title}
                 </h3>
                 <p className="mt-2 text-xs leading-relaxed text-[#6e6e73]">
@@ -227,56 +226,32 @@ export default function ShadowAiPage() {
         </div>
       </section>
 
-      {/* Como fazemos & O que isso não é */}
+      {/* Como conduzimos & Reflexão */}
       <section className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <div className="grid gap-8 lg:grid-cols-2">
-          {/* Como fazemos */}
-          <div className="rounded-3xl border border-black/[0.08] bg-white p-8 sm:p-10 shadow-sm space-y-4">
-            <span className="text-xs font-semibold uppercase tracking-wider text-[#0071e3]">
-              Metodologia
-            </span>
-            <h3 className="text-xl font-semibold text-[#1d1d1f]">
-              Como conduzimos o trabalho
-            </h3>
-            <p className="text-xs sm:text-sm leading-relaxed text-[#6e6e73]">
-              Entendemos o uso real em vez de partir da proibição pura e simples. Combinamos conversas estruturadas com as áreas de negócio, revisão dos contratos e ferramentas já adotadas e, quando a infraestrutura da empresa permite, análise técnica de tráfego e aplicações a partir do controle de aplicações do firewall de borda.
+        <div className="rounded-3xl border border-black/[0.08] bg-white p-8 sm:p-12 shadow-sm space-y-6">
+          <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-[#1d1d1f]">
+            Como conduzimos
+          </h2>
+          <p className="text-sm leading-relaxed text-[#424245]">
+            Começamos conversando com as áreas, não pelo bloqueio. Olhamos as ferramentas já adotadas e seus termos, e, quando o ambiente permite, a análise de tráfego e de aplicações a partir do controle de aplicações do firewall.
+          </p>
+          <div className="rounded-2xl border border-black/[0.06] bg-[#fafafc] p-6">
+            <p className="text-xs sm:text-sm font-medium italic text-[#0071e3] leading-relaxed">
+              Proibir sem entender costuma empurrar o uso para ainda mais longe da vista da TI. Por isso o ponto de partida é entender por que as pessoas recorreram à IA.
             </p>
-            <ul className="space-y-2 text-xs text-[#515154] pt-2">
-              <li className="flex items-start gap-2">
-                <span className="text-[#0071e3]">✓</span>
-                <span>Diálogo colaborativo com os líderes de equipe e usuários</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-[#0071e3]">✓</span>
-                <span>Análise de termos de privacidade das ferramentas em uso</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-[#0071e3]">✓</span>
-                <span>Visibilidade técnica via controle de aplicação de rede</span>
-              </li>
-            </ul>
           </div>
+        </div>
+      </section>
 
-          {/* O que isso não é */}
-          <div className="rounded-3xl border border-black/[0.08] bg-[#fafafc] p-8 sm:p-10 space-y-4">
-            <span className="text-xs font-semibold uppercase tracking-wider text-[#86868b]">
-              Limites e Clareza
-            </span>
-            <h3 className="text-xl font-semibold text-[#1d1d1f]">
-              O que este trabalho não é
-            </h3>
-            <div className="space-y-3 text-xs leading-relaxed text-[#6e6e73]">
-              <p>
-                <strong>Não é perseguição interna:</strong> o objetivo nunca é punir colaboradores que buscaram soluções para trabalhar melhor, mas fornecer diretrizes seguras para a empresa.
-              </p>
-              <p>
-                <strong>Não substitui assessoria jurídica:</strong> oferecemos consultoria técnica e de governança operacional. Recomendações jurídicas e validação de contratos devem ser conduzidas pelo corpo legal ou DPO da sua organização.
-              </p>
-              <p>
-                <strong>Não promete visibilidade total:</strong> nenhum método garante enxergar 100% de todo dispositivo e conexão pessoal. Entregamos um retrato fiel, transparente e fundamentado do ambiente, com orientações de mitigação.
-              </p>
-            </div>
-          </div>
+      {/* O que isso não é */}
+      <section className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div className="rounded-3xl border border-black/[0.08] bg-[#f5f5f7] p-8 sm:p-12 space-y-4">
+          <h2 className="text-xl sm:text-2xl font-semibold text-[#1d1d1f]">
+            O que isso não é
+          </h2>
+          <p className="text-xs sm:text-sm leading-relaxed text-[#6e6e73]">
+            Não é auditoria para apontar culpados. Não substitui o jurídico: recomendações legais e a análise de contratos ficam com o corpo jurídico ou o encarregado da sua empresa. E não promete enxergar tudo: entregamos um retrato honesto do que conseguimos ver.
+          </p>
         </div>
       </section>
 
@@ -284,17 +259,17 @@ export default function ShadowAiPage() {
       <section className="bg-[#f5f5f7] py-20">
         <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
           <h2 className="text-3xl font-semibold tracking-tight text-[#1d1d1f] sm:text-4xl">
-            Quer entender como a IA está sendo usada na sua empresa?
+            Quer um retrato honesto de como a IA está sendo usada aí?
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-base text-[#6e6e73]">
-            Converse com a nossa equipe para desenhar um diagnóstico adequado ao seu cenário.
+            Vamos conversar.
           </p>
           <div className="mt-8 flex justify-center">
             <Link
               href="/contato?assunto=shadow-ai"
               className="rounded-full bg-[#0071e3] px-8 py-3.5 text-sm font-semibold text-white shadow-sm transition-all hover:bg-[#0077ed]"
             >
-              Conversar sobre Shadow AI
+              Perguntar sobre IA na minha empresa
             </Link>
           </div>
         </div>

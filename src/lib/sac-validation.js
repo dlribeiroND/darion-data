@@ -23,8 +23,10 @@ export function validateSacForm(data) {
     errors.nome = "Informe seu nome completo.";
   }
 
-  if (!EMAIL_REGEX.test(email) || email.length > 254) {
-    errors.email = "Informe um e-mail válido.";
+  if (!email) {
+    errors.email = "Precisamos do seu e-mail para poder responder.";
+  } else if (!EMAIL_REGEX.test(email) || email.length > 254) {
+    errors.email = "Informe um e-mail válido para podermos responder.";
   }
 
   if (telefone.length > 0) {

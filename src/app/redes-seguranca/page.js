@@ -2,68 +2,88 @@ import Link from "next/link";
 import { site } from "@/content/site.config";
 
 export const metadata = {
-  title: "Redes & Segurança Fortinet | Darion Data",
+  title: "Redes e Segurança Fortinet",
   description:
-    "Projetamos, implantamos e gerenciamos redes corporativas multi-site, Secure SD-WAN, Firewalls de nova geração e Zero Trust com tecnologia Fortinet.",
+    "Projetamos a rede e a proteção como uma coisa só com tecnologia Fortinet. Firewalls de nova geração, SD-WAN, Zero Trust e segmentação.",
+  alternates: {
+    canonical: "https://www.dariondata.com.br/redes-seguranca",
+  },
+  openGraph: {
+    title: "Redes e Segurança Fortinet | Darion Data",
+    description:
+      "Projetamos a rede e a proteção como uma coisa só com tecnologia Fortinet. Firewalls de nova geração, SD-WAN, Zero Trust e segmentação.",
+    url: "https://www.dariondata.com.br/redes-seguranca",
+    siteName: site.brandName,
+    locale: "pt_BR",
+    type: "website",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Darion Data",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Redes e Segurança Fortinet | Darion Data",
+    description:
+      "Projetamos a rede e a proteção como uma coisa só com tecnologia Fortinet. Firewalls de nova geração, SD-WAN, Zero Trust e segmentação.",
+    images: ["/og-image.png"],
+  },
 };
 
 const CAPABILITIES = [
   {
-    title: "Firewall de Nova Geração (FortiGate)",
-    subtitle: "Inspeção profunda e controle granular",
+    title: "Firewall de nova geração (FortiGate)",
     description:
-      "Políticas baseadas em aplicação, usuário e contexto, com inspeção de tráfego criptografado SSL/TLS, sistema de prevenção de intrusão (IPS), filtragem web corporativa e proteção contra malware. O dimensionamento técnico correto do hardware é fundamental para manter a inspeção ativa e a segurança operacional sem comprometer a taxa de transferência e a experiência do usuário.",
+      "Política por aplicação e usuário, inspeção de tráfego criptografado, IPS e filtragem web. O que mais se subestima é o tamanho do equipamento: dimensionado curto, a inspeção é desligada \"só por enquanto\" e nunca mais volta. Por isso dimensionamos já pensando na inspeção ligada.",
   },
   {
     title: "Secure SD-WAN",
-    subtitle: "Conectividade resiliente entre sites e nuvem",
     description:
-      "Interligação de matriz, filiais e ambientes em nuvem com monitoramento contínuo de métricas dos links (perda de pacotes, latência e jitter). O tráfego crítico é priorizado e, em caso de degradação, o failover automático redireciona a comunicação para o link íntegro sem derrubar sessões ativas.",
+      "Matriz, filiais e nuvem ligadas escolhendo o melhor caminho conforme a qualidade do link naquele momento (perda, latência, oscilação). Quando um link piora, o tráfego importante muda de caminho, reduzindo o impacto sobre quem está trabalhando.",
   },
   {
-    title: "Zero Trust e Acesso Remoto (ZTNA)",
-    subtitle: "Acesso restrito por aplicação",
+    title: "Zero Trust e acesso remoto (ZTNA)",
     description:
-      "Substituição de VPNs convencionais que concedem visibilidade ampla de toda a rede interna por controle de acesso estrito por aplicação. Acesso condicionado à verificação contínua da identidade do usuário, conformidade do dispositivo (postura de segurança) e autenticação multifator.",
+      "Em vez de abrir a rede inteira para quem se conecta de fora, cada pessoa chega só às aplicações de que precisa, com identidade e dispositivo verificados e autenticação multifator.",
   },
   {
-    title: "Segmentação e Ambientes Críticos",
-    subtitle: "Isolamento de tráfego leste-oeste",
+    title: "Segmentação",
     description:
-      "Divisão da rede em zonas de segurança para conter movimentações laterais de possíveis ameaças. Isolamento de servidores de banco de dados, estações de trabalho de terceiros, redes de visitantes e dispositivos de automação ou IoT.",
+      "Separar a rede em zonas limita o estrago se algo der errado: servidores, terceiros, visitantes e dispositivos IoT ficam cada um no seu lugar.",
   },
   {
-    title: "Rede Local Segura (LAN / Wi-Fi)",
-    subtitle: "Conectividade cabeada e sem fio integrada ao firewall",
+    title: "Rede local segura (LAN e Wi-Fi)",
     description:
-      "Extensão das políticas de segurança diretamente aos switches e pontos de acesso (FortiSwitch e FortiAP), permitindo controle centralizado de portas, VLANs dinâmicas e isolamento de dispositivos desde a camada de acesso físico.",
+      "Quando faz sentido, estendemos as mesmas políticas aos switches e pontos de acesso (FortiSwitch e FortiAP).",
   },
   {
-    title: "Gestão Centralizada e Registros (FortiManager e FortiAnalyzer)",
-    subtitle: "Padronização e trilhas de auditoria",
+    title: "Gestão e registros (FortiManager e FortiAnalyzer)",
     description:
-      "Administração centralizada de políticas para ambientes com múltiplos equipamentos, permitindo provisionamento padronizado, histórico documentado de alterações e retenção estruturada de logs para auditorias de segurança e conformidade com a LGPD.",
+      "Políticas e histórico de mudanças num só lugar. Na hora da auditoria, ou de descobrir \"quem mudou isso\", a resposta existe.",
   },
 ];
 
-const PROJECT_TYPES = [
-  "Redes corporativas multi-filial com conectividade baseada em Secure SD-WAN.",
-  "Substituição e migração técnica de firewalls legados para a plataforma FortiGate.",
-  "Segmentação de redes internas e isolamento de ambientes e sistemas críticos.",
-  "Conectividade híbrida segura entre datacenters locais e recursos em nuvem.",
-  "Acesso remoto seguro estruturado para equipes internas e prestadores terceiros.",
-  "Adequação de registros de conexão, retenção de logs e controles para auditoria e LGPD.",
+const HELP_SCENARIOS = [
+  "Rede com várias filiais.",
+  "Troca de firewall antigo.",
+  "Separação de ambientes internos.",
+  "Ligação segura entre data center e nuvem.",
+  "Acesso remoto para equipe e terceiros.",
+  "Registros e controles para auditoria e LGPD.",
 ];
 
-const DIAGNOSTIC_CHECKLIST = [
-  "Topologia de rede física e lógica, identificando pontos únicos de falha (SPOF).",
-  "Redundância, latência e qualidade real de entrega dos links de internet e operadoras.",
-  "Regras de firewall em produção: mapeamento de regras ativas, redundantes ou órfãs.",
-  "Exposição de portas e serviços internos diretamente para a internet pública.",
-  "Modelo de acesso remoto em uso e raio de alcance de acessos externos.",
-  "Nível de segmentação entre áreas de negócio, servidores e dispositivos de rede.",
-  "Capacidade e consumo de recursos do equipamento para inspeção profunda de tráfego.",
-  "Políticas de geração, retenção e monitoramento de logs de tráfego e segurança.",
+const DIAGNOSTIC_POINTS = [
+  "O desenho atual e os pontos únicos de falha.",
+  "A qualidade e a redundância dos links.",
+  "As regras de firewall em uso e as esquecidas.",
+  "O que está exposto na internet.",
+  "Como o acesso remoto funciona hoje.",
+  "A capacidade do equipamento.",
+  "Como os registros são guardados e usados.",
 ];
 
 export default function RedesSegurancaPage() {
@@ -76,15 +96,15 @@ export default function RedesSegurancaPage() {
         </div>
 
         <h1 className="mt-6 text-4xl font-semibold tracking-tight text-[#1d1d1f] sm:text-5xl lg:text-6xl">
-          Redes e segurança para ambientes
+          Redes e segurança
           <br />
           <span className="bg-gradient-to-r from-[#0071e3] to-[#2997ff] bg-clip-text text-transparent">
-            que não toleram parada.
+            desenhadas juntas.
           </span>
         </h1>
 
         <p className="mx-auto mt-6 max-w-3xl text-base sm:text-lg leading-relaxed text-[#6e6e73]">
-          Trabalhamos com a plataforma Fortinet (Security Fabric) como parceira no modelo Integrator. Projetamos rede e segurança de forma integrada, em vez de tratar uma como remendo da outra.
+          Parceira Fortinet, modelo Integrator. Projetamos a rede e a proteção como uma coisa só. Segurança que atrapalha o trabalho acaba contornada, e rede que ninguém entende acaba virando risco.
         </p>
 
         <div className="mt-8 flex justify-center">
@@ -92,7 +112,7 @@ export default function RedesSegurancaPage() {
             href="/contato?assunto=redes"
             className="rounded-full bg-[#0071e3] px-8 py-3 text-sm font-medium text-white shadow-sm transition-all hover:bg-[#0077ed]"
           >
-            Agendar conversa técnica
+            Conte o seu cenário
           </Link>
         </div>
       </section>
@@ -100,15 +120,9 @@ export default function RedesSegurancaPage() {
       {/* Capacidades Fortinet */}
       <section className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="text-center">
-          <span className="text-xs font-semibold uppercase tracking-wider text-[#0071e3]">
-            Arquitetura Técnica
-          </span>
-          <h2 className="mt-2 text-3xl font-semibold tracking-tight text-[#1d1d1f]">
+          <h2 className="text-3xl font-semibold tracking-tight text-[#1d1d1f]">
             Capacidades da plataforma
           </h2>
-          <p className="mx-auto mt-2 max-w-xl text-sm text-[#6e6e73]">
-            Recursos projetados e operados conforme as necessidades e o porte de cada organização.
-          </p>
         </div>
 
         <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -118,10 +132,7 @@ export default function RedesSegurancaPage() {
               className="rounded-3xl border border-black/[0.08] bg-white p-7 shadow-xs flex flex-col justify-between"
             >
               <div>
-                <span className="text-[11px] font-semibold uppercase tracking-wider text-[#0071e3]">
-                  {item.subtitle}
-                </span>
-                <h3 className="mt-2 text-lg font-semibold text-[#1d1d1f]">
+                <h3 className="text-lg font-semibold text-[#1d1d1f]">
                   {item.title}
                 </h3>
                 <p className="mt-3 text-xs sm:text-sm leading-relaxed text-[#6e6e73]">
@@ -135,84 +146,41 @@ export default function RedesSegurancaPage() {
 
       {/* Teaser: Redes que antecipam e se ajustam */}
       <section className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <div className="rounded-3xl border border-black/[0.08] bg-[#f5f5f7] p-8 sm:p-10">
-          <div className="max-w-3xl">
-            <span className="text-xs font-semibold uppercase tracking-wider text-[#0071e3]">
-              Evolução e Inteligência
-            </span>
-            <h3 className="mt-2 text-2xl font-semibold tracking-tight text-[#1d1d1f]">
-              Redes que antecipam e se ajustam
+        <div className="rounded-3xl border border-black/[0.08] bg-[#f5f5f7] p-8 sm:p-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+          <div className="max-w-2xl">
+            <h3 className="text-xl sm:text-2xl font-semibold text-[#1d1d1f]">
+              Depois que a base está firme
             </h3>
-            <p className="mt-3 text-sm text-[#6e6e73] leading-relaxed">
-              A mesma infraestrutura de conectividade pode ser expandida com práticas de automação, telemetria preditiva e validação antes da janela de manutenção. Avaliamos a maturidade de cada rede para propor recursos inteligentes que realmente façam sentido.
+            <p className="mt-2 text-xs sm:text-sm text-[#6e6e73] leading-relaxed">
+              Dá para simular mudanças antes de aplicar, antecipar falha de link e automatizar rotinas. Está na página de automação.
             </p>
-            <div className="mt-6">
-              <Link
-                href="/automacao#redes-inteligentes"
-                className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#0071e3] hover:underline"
-              >
-                Conhecer a abordagem de redes inteligentes
-                <span aria-hidden="true">→</span>
-              </Link>
-            </div>
           </div>
+          <Link
+            href="/automacao#redes-inteligentes"
+            className="rounded-full bg-[#1d1d1f] px-6 py-2.5 text-xs font-semibold text-white transition-all hover:bg-black whitespace-nowrap"
+          >
+            Ver automação de redes
+          </Link>
         </div>
       </section>
 
-      {/* Tipos de projeto que atendemos */}
+      {/* Situações em que podemos ajudar */}
       <section className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="rounded-3xl border border-black/[0.08] bg-white p-8 sm:p-12 shadow-sm">
           <div className="max-w-2xl">
-            <span className="text-xs font-semibold uppercase tracking-wider text-[#0071e3]">
-              Escopo de Atuação
-            </span>
-            <h2 className="mt-2 text-2xl sm:text-3xl font-semibold tracking-tight text-[#1d1d1f]">
-              Tipos de projeto que atendemos
+            <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-[#1d1d1f]">
+              Situações em que podemos ajudar:
             </h2>
-            <p className="mt-2 text-sm text-[#6e6e73]">
-              Cenários comuns conduzidos pela Darion Data na área de infraestrutura de redes:
-            </p>
           </div>
 
           <div className="mt-8 grid gap-3 sm:grid-cols-2">
-            {PROJECT_TYPES.map((type, idx) => (
+            {HELP_SCENARIOS.map((item, idx) => (
               <div
                 key={idx}
                 className="flex items-start gap-3 rounded-2xl border border-black/[0.06] bg-[#fafafc] p-4 text-xs text-[#424245]"
               >
                 <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#0071e3]/10 text-[10px] font-bold text-[#0071e3]">
                   ✓
-                </span>
-                <span className="leading-relaxed">{type}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* O que avaliamos num diagnóstico */}
-      <section className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <div className="rounded-3xl border border-black/[0.08] bg-white p-8 sm:p-12 shadow-sm">
-          <div className="max-w-2xl">
-            <span className="text-xs font-semibold uppercase tracking-wider text-[#0071e3]">
-              Levantamento Técnico
-            </span>
-            <h2 className="mt-2 text-2xl sm:text-3xl font-semibold tracking-tight text-[#1d1d1f]">
-              O que avaliamos num diagnóstico
-            </h2>
-            <p className="mt-2 text-sm text-[#6e6e73]">
-              Antes de sugerir alterações em qualquer topologia, analisamos parâmetros concretos do ambiente:
-            </p>
-          </div>
-
-          <div className="mt-8 grid gap-3 sm:grid-cols-2">
-            {DIAGNOSTIC_CHECKLIST.map((item, idx) => (
-              <div
-                key={idx}
-                className="flex items-start gap-3 rounded-2xl border border-black/[0.06] bg-[#fafafc] p-4 text-xs text-[#424245]"
-              >
-                <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-slate-200 text-[10px] font-medium text-slate-700">
-                  {idx + 1}
                 </span>
                 <span className="leading-relaxed">{item}</span>
               </div>
@@ -221,32 +189,46 @@ export default function RedesSegurancaPage() {
         </div>
       </section>
 
-      {/* Fornecimento de equipamentos (condicional à configuração) */}
-      {site.offersEquipmentSupply && (
-        <section className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <div className="rounded-2xl border border-black/[0.08] bg-white p-6 text-xs text-[#6e6e73]">
-            <p>
-              O foco da Darion Data é serviço. Quando o projeto exige equipamentos e licenças Fortinet, apoiamos a especificação e o fornecimento como parte do escopo.
-            </p>
+      {/* O que olhamos antes de propor qualquer coisa */}
+      <section className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div className="rounded-3xl border border-black/[0.08] bg-[#f5f5f7] p-8 sm:p-12">
+          <div className="max-w-2xl">
+            <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-[#1d1d1f]">
+              O que olhamos antes de propor qualquer coisa:
+            </h2>
           </div>
-        </section>
-      )}
+
+          <div className="mt-8 grid gap-3 sm:grid-cols-2">
+            {DIAGNOSTIC_POINTS.map((item, idx) => (
+              <div
+                key={idx}
+                className="flex items-start gap-3 rounded-2xl border border-black/[0.06] bg-white p-4 text-xs text-[#424245] shadow-2xs"
+              >
+                <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#0071e3]/10 text-[10px] font-bold text-[#0071e3]">
+                  •
+                </span>
+                <span className="leading-relaxed">{item}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* Chamada Final */}
       <section className="bg-[#f5f5f7] py-20">
         <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
           <h2 className="text-3xl font-semibold tracking-tight text-[#1d1d1f] sm:text-4xl">
-            Precisa revisar a segurança e a conectividade da sua rede?
+            Quer uma segunda opinião sobre a sua rede?
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-base text-[#6e6e73]">
-            Agende uma conversa técnica para analisarmos o cenário da sua empresa.
+            Conte o cenário.
           </p>
           <div className="mt-8 flex justify-center">
             <Link
               href="/contato?assunto=redes"
               className="rounded-full bg-[#0071e3] px-8 py-3.5 text-sm font-semibold text-white shadow-sm transition-all hover:bg-[#0077ed]"
             >
-              Agendar conversa técnica
+              Falar sobre a minha rede
             </Link>
           </div>
         </div>

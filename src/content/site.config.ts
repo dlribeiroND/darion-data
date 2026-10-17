@@ -19,5 +19,6 @@ export const site = {
   },
   showNseProgress: false, // true só quando o Diego pedir
   offersEquipmentSupply: false, // true só depois que o CNAE de comércio estiver regularizado
+  schedulingUrl: "", // vazio = sem ferramenta de agenda externa; botões levam a formulário
   foundedYear: 2026,
 };

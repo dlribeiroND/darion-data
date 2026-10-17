@@ -74,7 +74,7 @@ export default function SiteFooter() {
           <ul className="mt-3.5 space-y-2.5 text-xs text-[#6e6e73]">
             <li>
               <Link href="/contato" className="transition-colors hover:text-[#0071e3]">
-                Agendar conversa técnica
+                Conte o seu cenário
               </Link>
             </li>
             <li className="text-[#6e6e73]">

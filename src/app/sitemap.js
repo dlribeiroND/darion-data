@@ -1,5 +1,5 @@
 export default function sitemap() {
-  const baseUrl = "https://dariondata.com.br";
+  const baseUrl = "https://www.dariondata.com.br";
   const now = new Date();
 
   const routes = [

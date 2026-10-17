@@ -18,21 +18,39 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  metadataBase: new URL("https://dariondata.com.br"),
+  metadataBase: new URL("https://www.dariondata.com.br"),
   title: {
-    default: "Darion Data | Redes corporativas, SD-WAN, segurança Fortinet e automação",
+    default: "Redes corporativas, SD-WAN, segurança Fortinet e automação | Darion Data",
     template: "%s | Darion Data",
   },
   description:
-    "A Darion Data projeta, implanta e evolui redes multi-site, SD-WAN e segurança de perímetro com tecnologia Fortinet, automação de processos e governança de Shadow AI.",
+    "A Darion Data projeta e implanta redes multi-site, SD-WAN e segurança de perímetro com tecnologia Fortinet. Também trabalha com automação de processos e de redes, e com a governança do uso de IA dentro das empresas.",
+  alternates: {
+    canonical: "https://www.dariondata.com.br",
+  },
   openGraph: {
     type: "website",
     locale: "pt_BR",
-    url: "https://dariondata.com.br",
+    url: "https://www.dariondata.com.br",
     siteName: site.brandName,
-    title: "Darion Data | Redes corporativas, SD-WAN, segurança Fortinet e automação",
+    title: "Redes corporativas, SD-WAN, segurança Fortinet e automação | Darion Data",
     description:
-      "Redes multi-site, SD-WAN e segurança perimetral Fortinet, automação e inteligência de processos e governança de IA corporativa.",
+      "A Darion Data projeta e implanta redes multi-site, SD-WAN e segurança de perímetro com tecnologia Fortinet. Também trabalha com automação de processos e de redes, e com a governança do uso de IA dentro das empresas.",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Darion Data",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Redes corporativas, SD-WAN, segurança Fortinet e automação | Darion Data",
+    description:
+      "A Darion Data projeta e implanta redes multi-site, SD-WAN e segurança de perímetro com tecnologia Fortinet. Também trabalha com automação de processos e de redes, e com a governança do uso de IA dentro das empresas.",
+    images: ["/og-image.png"],
   },
 };
 
@@ -41,7 +59,7 @@ const jsonLd = {
   "@type": "Organization",
   name: site.brandName,
   legalName: site.legalName,
-  url: "https://dariondata.com.br",
+  url: "https://www.dariondata.com.br",
   taxID: site.cnpj,
   email: site.emailCommercial,
   address: {

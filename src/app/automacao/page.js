@@ -1,98 +1,99 @@
 import Link from "next/link";
 
 export const metadata = {
-  title: "Automação & IA | Processos e Redes | Darion Data",
+  title: "Automação de processos e de redes",
   description:
-    "Automação de processos manuais, agentes de IA com supervisão humana e abordagens de redes inteligentes e autônomas com governança.",
+    "Automação para rotinas de negócio e de redes, agentes de IA com supervisão humana e abordagens de redes inteligentes e autônomas com governança.",
+  alternates: {
+    canonical: "https://www.dariondata.com.br/automacao",
+  },
+  openGraph: {
+    title: "Automação de processos e de redes | Darion Data",
+    description:
+      "Automação para rotinas de negócio e de redes, agentes de IA com supervisão humana e abordagens de redes inteligentes e autônomas com governança.",
+    url: "https://www.dariondata.com.br/automacao",
+    siteName: "Darion Data",
+    locale: "pt_BR",
+    type: "website",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Darion Data",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Automação de processos e de redes | Darion Data",
+    description:
+      "Automação para rotinas de negócio e de redes, agentes de IA com supervisão humana e abordagens de redes inteligentes e autônomas com governança.",
+    images: ["/og-image.png"],
+  },
 };
-
-const PROCESS_AREAS = [
-  {
-    title: "Tarefas manuais repetitivas",
-    description:
-      "Cópia manual de dados entre sistemas e planilhas, conferências cadastrais, lançamentos repetitivos e triagem inicial de solicitações que consomem o tempo das equipes.",
-  },
-  {
-    title: "Processos existentes que podem melhorar",
-    description:
-      "Integrações frágeis, rotinas com atrasos constantes, falta de registro do que foi feito, retrabalho por falhas em etapas intermediárias e dependência excessiva de uma única pessoa.",
-  },
-  {
-    title: "Rotinas de TI e operações",
-    description:
-      "Padronização de configurações, verificação automática de conformidade, triagem e envio proativo de alertas sobre eventos operacionais.",
-  },
-];
 
 const NETWORK_APPROACHES = [
   {
-    title: "Gerenciamento orientado por intenção (Intent-Based)",
+    title: "Gerenciamento por intenção",
     description:
-      "Você descreve o resultado de negócio que a rede precisa entregar — como os serviços que uma nova filial deve acessar — e a configuração técnica é derivada, aplicada e verificada continuamente.",
-    question: "E se você apenas definisse o objetivo e o sistema orquestrasse os parâmetros da rede?",
+      "Você descreve o que a filial nova precisa acessar; a configuração é gerada e conferida continuamente, em vez de montada à mão, equipamento por equipamento.",
   },
   {
-    title: "Gêmeo digital da rede (Digital Twin)",
+    title: "Gêmeo digital da rede",
     description:
-      "Construção de um modelo virtual da topologia e das políticas de segurança, utilizado para simular alterações de firewall, falhas de equipamentos e expansões antes de tocar no ambiente em produção.",
-    question: "E se você pudesse validar o impacto de uma alteração crítica de roteamento antes da janela de manutenção?",
+      "Um modelo virtual da topologia e das políticas, para simular uma mudança de firewall ou a queda de um equipamento antes de mexer na rede de verdade.",
+    reflection: "E se o teste pudesse acontecer na véspera, e não na janela da madrugada?",
   },
   {
-    title: "Análise preditiva e manutenção preditiva",
+    title: "Análise preditiva",
     description:
-      "Telemetria em tempo real somada ao histórico de tráfego para identificar degradação de links de operadoras, gargalos de banda e desvios de comportamento antes que resultem em indisponibilidade.",
-    question: "E se a equipe recebesse aviso de degradação de performance antes dos usuários perceberem lentidão?",
+      "Telemetria e histórico ajudam a perceber um link piorando ou um padrão estranho de tráfego antes de virar chamado.",
+    reflection: "E se a equipe fosse avisada antes do primeiro usuário reclamar?",
   },
   {
-    title: "Redes inteligentes e autônomas (Self-Healing e AIOps)",
+    title: "Rede que se ajusta",
     description:
-      "Correlação dinâmica de eventos, diagnóstico assistido e execução de ações corretivas automatizadas para falhas conhecidas, com trava de aprovação humana para ações de maior impacto operacional.",
-    question: "E se rotinas de contingência pudessem mitigar oscilações comuns sem exigir intervenção humana manual?",
+      "Para falhas conhecidas, a rede aplica o ajuste sozinha, com aprovação humana quando o impacto é maior.",
+    reflection: "E se aquele reinício das três da manhã não precisasse acordar ninguém?",
   },
   {
-    title: "Provisionamento sem toque (Zero-Touch) e orquestração",
+    title: "Instalação sem especialista no local",
     description:
-      "Novas unidades ou equipamentos entram na infraestrutura com configurações padronizadas e validadas automaticamente a partir de modelos centrais, reduzindo erros de configuração local.",
-    question: "E se a ativação de uma nova filial exigisse apenas plugar o equipamento à tomada e ao link?",
+      "A unidade nova chega com a configuração padrão já validada.",
   },
   {
-    title: "Rede como código e verificação de conformidade",
+    title: "Rede como código",
     description:
-      "Políticas e parâmetros de rede mantidos em repositórios versionados e auditáveis. Qualquer desvio em relação à configuração homologada é detectado e sinalizado imediatamente.",
-    question: "E se você soubesse exatamente quando e por quem uma política de segurança foi alterada?",
+      "Configurações versionadas, com histórico de quem mudou o quê e alerta quando algo foge do combinado.",
   },
   {
-    title: "Telemetria e observabilidade",
+    title: "Visão única",
     description:
-      "Visibilidade contínua de desempenho, qualidade de experiência de acesso e eventos de segurança consolidados em painéis claros para acompanhamento operacional.",
-    question: "E se toda a saúde da conectividade estivesse visível em tempo real sem silos de informação?",
+      "Desempenho, experiência de acesso e eventos de segurança num só painel, para conversar sobre a rede com base no que está acontecendo.",
   },
 ];
 
 const FAQS = [
   {
-    q: "Preciso trocar meus sistemas atuais?",
-    a: "Não. Nossas automações integram os sistemas que você já utiliza: sistemas de gestão internos, bancos de dados, APIs, planilhas e plataformas legadas. Caso um sistema apresente limitações técnicas para integração, informamos isso com clareza logo no diagnóstico inicial.",
+    q: "Preciso trocar meus sistemas?",
+    a: "Em geral não; integramos o que funciona e dizemos com clareza quando algum sistema não permite.",
   },
   {
-    q: "A automação serve se meu processo ou minha rede já são parcialmente automatizados?",
-    a: "Sim. Em muitos casos, o processo já possui algum nível de script ou exportação automática, mas ainda depende de uma pessoa para conferir planilhas, corrigir quebras de integração ou rodar rotinas manuais de suporte. Atuamos justamente na estabilização e no fechamento desses elos frágeis.",
+    q: "Serve se meu processo ou minha rede já são parcialmente automáticos?",
+    a: "Sim; muita melhoria está em consertar os pontos frágeis.",
   },
   {
-    q: "O que é um gêmeo digital de rede, e minha empresa precisa de um?",
-    a: "Um gêmeo digital é uma réplica virtual do comportamento e das regras da sua rede. Ele é recomendado para ambientes de alta complexidade com mudanças frequentes e tolerância zero a indisponibilidade. Nem todo ambiente precisa de um gêmeo digital, e avaliamos com honestidade se faz sentido para o seu caso.",
+    q: "O que é um gêmeo digital de rede, e eu preciso de um?",
+    a: "É uma cópia virtual para testar mudanças. Faz sentido onde uma mudança mal testada custa caro; em muitos ambientes, não.",
   },
   {
-    q: "Posso manter aprovação humana antes de ações críticas?",
-    a: "Sim. A automação e os agentes de IA são configurados com limites estritos de governança. Etapas críticas, como movimentações financeiras, confirmações de cadastros sensíveis ou alterações estruturais de rede, podem exigir validação e clique humano formal.",
-  },
-  {
-    q: "Como vocês tratam dados pessoais?",
-    a: "Definimos com cada cliente quais dados os processos acessam, onde são processados e quais ferramentas são utilizadas. Em projetos no ambiente do cliente, a Darion Data atua como operadora sob estrito cumprimento da LGPD e dos termos do contrato de prestação de serviços.",
+    q: "Posso aprovar antes das ações críticas?",
+    a: "Sim; o nível de autonomia é definido junto com você.",
   },
   {
     q: "Por onde começar?",
-    a: "Começamos por uma conversa técnica inicial para compreender onde estão os gargalos do seu processo ou da sua conectividade. A partir daí, estruturamos uma proposta com escopo objetivo e etapas claras de execução.",
+    a: "Pela conversa: você conta o cenário e a gente diz o que vê.",
   },
 ];
 
@@ -102,19 +103,19 @@ export default function AutomacaoPage() {
       {/* Header */}
       <section className="mx-auto max-w-4xl px-4 pt-16 text-center sm:px-6 lg:px-8">
         <div className="inline-flex items-center gap-2 rounded-full border border-black/[0.08] bg-white px-3.5 py-1 text-xs font-medium text-[#0071e3] shadow-xs">
-          <span>Automação de Processos · Inteligência de Redes</span>
+          <span>Automação · Processos e Redes</span>
         </div>
 
         <h1 className="mt-6 text-4xl font-semibold tracking-tight text-[#1d1d1f] sm:text-5xl lg:text-6xl">
-          Automação e inteligência
+          Automação para rotinas de negócio
           <br />
           <span className="bg-gradient-to-r from-[#0071e3] via-[#0077ed] to-[#2997ff] bg-clip-text text-transparent">
-            para processos e para redes.
+            e para redes.
           </span>
         </h1>
 
         <p className="mx-auto mt-6 max-w-3xl text-base sm:text-lg leading-relaxed text-[#6e6e73]">
-          Automatizar não é só tirar digitação de gente. Muitas vezes o processo já é automatizado, mas depende de planilhas que alguém confere, de integrações que quebram sem aviso ou de rotinas que ninguém consegue auditar. O mesmo vale para redes: elas já têm automação, e ainda assim a mudança é lenta, o diagnóstico é manual e o risco aparece depois.
+          Nem toda automação começa com alguém digitando planilha. Às vezes o processo já roda sozinho, mas quebra sem avisar ou só uma pessoa sabe consertar. Rede também: tem script, mas toda mudança continua lenta e arriscada.
         </p>
 
         <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
@@ -128,7 +129,7 @@ export default function AutomacaoPage() {
             href="#redes-inteligentes"
             className="rounded-full border border-black/[0.1] bg-white px-6 py-2.5 text-xs font-medium text-[#1d1d1f] hover:bg-black/[0.02] transition-colors"
           >
-            Automação e inteligência de redes
+            Redes que antecipam e se ajustam
           </a>
         </div>
       </section>
@@ -137,190 +138,132 @@ export default function AutomacaoPage() {
       {/* SEÇÃO 1: Processos e Agentes de IA                        */}
       {/* ========================================================= */}
       <section id="processos-ia" className="scroll-mt-24 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <div className="rounded-3xl border border-black/[0.08] bg-white p-8 sm:p-12 shadow-sm space-y-12">
+        <div className="rounded-3xl border border-black/[0.08] bg-white p-8 sm:p-12 shadow-sm space-y-8">
           <div>
-            <span className="text-xs font-semibold uppercase tracking-wider text-[#0071e3]">
-              Frente 01
-            </span>
-            <h2 className="mt-2 text-2xl sm:text-3xl font-semibold tracking-tight text-[#1d1d1f]">
+            <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-[#1d1d1f]">
               Processos e agentes de IA
             </h2>
-            <p className="mt-2 text-sm text-[#6e6e73]">
-              Soluções aplicadas a rotinas operacionais e administrativas com supervisão humana e controle.
+          </div>
+
+          <div className="space-y-6 text-sm leading-relaxed text-[#424245]">
+            <p>
+              <strong>O que cansa e se repete.</strong> Cópia de dados entre sistemas e planilhas, conferências, cadastros, triagem de pedidos.
+            </p>
+            <p>
+              <strong>O que já é automático, mas é frágil.</strong> Integrações que quebram sem aviso, rotinas lentas, falta de registro do que foi feito, dependência de uma pessoa.
+            </p>
+            <p>
+              <strong>Rotinas de TI.</strong> Padronização de configurações, verificação automática, alertas que chegam a quem pode agir.
+            </p>
+            <div className="rounded-2xl border border-black/[0.06] bg-[#fafafc] p-6 space-y-3">
+              <h3 className="text-base font-semibold text-[#1d1d1f]">
+                Agentes de IA, com limite
+              </h3>
+              <p>
+                Leem documentos, fazem triagem, preparam informações, seguindo regras que definimos com você, registrando o que fazem e pedindo aprovação humana nas etapas críticas. A ideia nunca é substituir quem conhece o processo. É tirar da frente o que cansa e deixar a decisão com quem entende.
+              </p>
+            </div>
+            <p>
+              <strong>Dados e privacidade.</strong> Combinamos com cada cliente quais dados o processo acessa, onde é processado e quais ferramentas entram. Dados pessoais seguem a LGPD e o contrato.
             </p>
           </div>
 
-          {/* Onde atuamos */}
-          <div>
-            <h3 className="text-base font-semibold text-[#1d1d1f]">Onde atuamos</h3>
-            <div className="mt-4 grid gap-4 sm:grid-cols-3">
-              {PROCESS_AREAS.map((area, idx) => (
-                <div
-                  key={idx}
-                  className="rounded-2xl border border-black/[0.06] bg-[#fafafc] p-5 text-xs text-[#515154]"
-                >
-                  <h4 className="font-semibold text-[#1d1d1f] text-sm mb-2">{area.title}</h4>
-                  <p className="leading-relaxed">{area.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Integração e Agentes */}
-          <div className="grid gap-6 md:grid-cols-2">
-            <div className="rounded-2xl border border-black/[0.06] bg-[#fafafc] p-6 text-xs text-[#515154] space-y-3">
-              <h4 className="text-sm font-semibold text-[#1d1d1f]">
-                Integração com o que você já tem
-              </h4>
-              <p className="leading-relaxed">
-                Conectamos sistemas de gestão internos, bases de dados relacionais, APIs, planilhas e ferramentas internas. Em geral não é necessário trocar o que já funciona. Quando identificamos limitações técnicas estruturais em algum sistema, apontamos isso de forma transparente no diagnóstico.
-              </p>
-            </div>
-
-            <div className="rounded-2xl border border-black/[0.06] bg-[#fafafc] p-6 text-xs text-[#515154] space-y-3">
-              <h4 className="text-sm font-semibold text-[#1d1d1f]">
-                Agentes de IA, com limites definidos
-              </h4>
-              <p className="leading-relaxed">
-                Agentes para leitura de documentos estruturados, triagem e preparação de dados, operando sob regras explícitas, registro auditável de cada ação e pontos de aprovação humana nas etapas críticas. O nível de autonomia é determinado conjuntamente com o cliente.
-              </p>
-            </div>
-          </div>
-
-          {/* Dados e privacidade */}
-          <div className="rounded-2xl border border-black/[0.06] bg-[#f5f5f7] p-6 text-xs text-[#515154] space-y-2">
-            <h4 className="text-sm font-semibold text-[#1d1d1f]">
-              Dados e privacidade
-            </h4>
-            <p className="leading-relaxed">
-              Definimos com cada cliente quais dados o processo acessa, onde ocorre o processamento e quais ferramentas são utilizadas. Dados pessoais são tratados em estrita observância à LGPD e às cláusulas contratuais de confidencialidade e segurança da informação.
-            </p>
-          </div>
-
-          {/* Link para Shadow AI */}
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-t border-black/[0.06] pt-6">
-            <p className="text-xs text-[#6e6e73]">
+          {/* Ponte para Shadow AI */}
+          <div className="rounded-2xl border border-black/[0.06] bg-[#f5f5f7] p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <p className="text-xs text-[#515154] leading-relaxed">
               Antes de colocar IA no processo, vale saber como ela já está sendo usada na empresa.
             </p>
             <Link
               href="/shadow-ai"
-              className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#0071e3] hover:underline whitespace-nowrap"
+              className="rounded-full bg-[#1d1d1f] px-5 py-2 text-xs font-semibold text-white hover:bg-black transition-colors whitespace-nowrap"
             >
-              Conhecer a consultoria de Shadow AI
-              <span aria-hidden="true">→</span>
+              Ver governança de IA
             </Link>
           </div>
         </div>
       </section>
 
       {/* ========================================================= */}
-      {/* SEÇÃO 2: Automação e Inteligência de Redes                */}
+      {/* SEÇÃO 2: Redes que antecipam e se ajustam                 */}
       {/* ========================================================= */}
       <section id="redes-inteligentes" className="scroll-mt-24 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <div className="rounded-3xl border border-black/[0.08] bg-white p-8 sm:p-12 shadow-sm space-y-10">
-          <div>
-            <span className="text-xs font-semibold uppercase tracking-wider text-[#0071e3]">
-              Frente 02
-            </span>
-            <h2 className="mt-2 text-2xl sm:text-3xl font-semibold tracking-tight text-[#1d1d1f]">
-              Redes que antecipam, testam e se ajustam
+        <div className="rounded-3xl border border-black/[0.08] bg-white p-8 sm:p-12 shadow-sm space-y-8">
+          <div className="max-w-3xl">
+            <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-[#1d1d1f]">
+              Redes que antecipam e se ajustam
             </h2>
-            <p className="mt-3 text-sm text-[#6e6e73] leading-relaxed max-w-3xl">
-              Existe um conjunto de abordagens que muda a forma de operar uma rede grande: menos configuração manual equipamento por equipamento, mais simulação antes da mudança, mais antecipação de falhas. Avaliamos e propomos essas abordagens conforme o ambiente e o nível de maturidade de cada cliente. <strong>Nem toda rede precisa de tudo isso.</strong>
+            <p className="mt-3 text-sm text-[#6e6e73] leading-relaxed">
+              Algumas abordagens mudam bastante o jeito de cuidar de uma rede grande. Cada uma resolve um incômodo diferente. Avaliamos com você quais fazem sentido e em que ordem.
             </p>
           </div>
 
-          {/* Grid de Abordagens */}
-          <div className="grid gap-6 md:grid-cols-2">
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {NETWORK_APPROACHES.map((item, idx) => (
               <div
                 key={idx}
-                className="rounded-2xl border border-black/[0.06] bg-[#fafafc] p-6 text-xs text-[#515154] flex flex-col justify-between"
+                className="rounded-2xl border border-black/[0.06] bg-[#fafafc] p-6 flex flex-col justify-between"
               >
                 <div>
-                  <h3 className="text-sm font-semibold text-[#1d1d1f]">
+                  <h3 className="text-base font-semibold text-[#1d1d1f]">
                     {item.title}
                   </h3>
-                  <p className="mt-2.5 leading-relaxed text-[#515154]">
+                  <p className="mt-2 text-xs leading-relaxed text-[#6e6e73]">
                     {item.description}
                   </p>
                 </div>
-                <div className="mt-4 pt-3 border-t border-black/[0.04]">
-                  <p className="text-[11px] font-medium text-[#0071e3] italic">
-                    {item.question}
+                {item.reflection && (
+                  <p className="mt-4 pt-3 border-t border-black/[0.06] text-xs font-medium italic text-[#0071e3]">
+                    {item.reflection}
                   </p>
-                </div>
+                )}
               </div>
             ))}
           </div>
 
-          {/* Fechamento Fortinet */}
-          <div className="rounded-2xl border border-black/[0.06] bg-[#f5f5f7] p-6 text-xs text-[#6e6e73]">
-            <p className="leading-relaxed">
-              A plataforma Fortinet já traz recursos de automação e orquestração (Security Fabric, gestão centralizada). O primeiro passo costuma ser entender o que dá para aproveitar do que você já tem antes de propor algo a mais.
+          <div className="rounded-2xl border border-black/[0.08] bg-[#f5f5f7] p-6 text-xs text-[#515154] leading-relaxed space-y-2">
+            <p>
+              A plataforma Fortinet já traz boa parte desse caminho de automação e orquestração. O primeiro passo costuma ser descobrir o que você já tem e não usa.
+            </p>
+            <p className="font-medium text-[#1d1d1f]">
+              Nem todo ambiente precisa de tudo isso, e dizer o que não vale a pena também faz parte do nosso trabalho.
             </p>
           </div>
 
-          {/* Chamada para conversa */}
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-t border-black/[0.06] pt-6">
-            <p className="text-xs text-[#6e6e73]">
-              Quer saber qual dessas abordagens faz sentido para a sua rede? Conte o cenário.
-            </p>
+          <div className="flex justify-center pt-2">
             <Link
               href="/contato?assunto=automacao"
-              className="rounded-full bg-[#0071e3] px-6 py-2.5 text-xs font-semibold text-white shadow-sm hover:bg-[#0077ed] whitespace-nowrap"
+              className="rounded-full bg-[#0071e3] px-8 py-3 text-xs font-semibold text-white shadow-sm hover:bg-[#0077ed] transition-colors"
             >
-              Conversar sobre automação
+              Perguntar sobre automação
             </Link>
           </div>
         </div>
       </section>
 
-      {/* FAQ Reescrita */}
+      {/* ========================================================= */}
+      {/* SEÇÃO 3: Perguntas frequentes                             */}
+      {/* ========================================================= */}
       <section className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
         <div className="text-center">
-          <span className="text-xs font-semibold uppercase tracking-wider text-[#0071e3]">
-            Perguntas Frequentes
-          </span>
-          <h2 className="mt-2 text-2xl sm:text-3xl font-semibold tracking-tight text-[#1d1d1f]">
-            Dúvidas comuns sobre automação e inteligência
+          <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-[#1d1d1f]">
+            Perguntas frequentes
           </h2>
         </div>
 
-        <div className="mt-10 space-y-4">
-          {FAQS.map((item, idx) => (
+        <div className="mt-8 space-y-4">
+          {FAQS.map((faq, idx) => (
             <div
               key={idx}
-              className="rounded-2xl border border-black/[0.06] bg-white p-6 shadow-xs"
+              className="rounded-2xl border border-black/[0.06] bg-white p-6 shadow-2xs"
             >
               <h3 className="text-sm font-semibold text-[#1d1d1f]">
-                {item.q}
+                {faq.q}
               </h3>
-              <p className="mt-2 text-xs sm:text-sm leading-relaxed text-[#6e6e73]">
-                {item.a}
+              <p className="mt-2 text-xs leading-relaxed text-[#6e6e73]">
+                {faq.a}
               </p>
             </div>
           ))}
-        </div>
-      </section>
-
-      {/* CTA Final */}
-      <section className="bg-[#f5f5f7] py-20">
-        <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-semibold tracking-tight text-[#1d1d1f] sm:text-4xl">
-            Pronto para mapear oportunidades na sua operação?
-          </h2>
-          <p className="mx-auto mt-4 max-w-xl text-base text-[#6e6e73]">
-            Agende uma conversa técnica para alinharmos os pontos de maior retorno em processos e infraestrutura.
-          </p>
-          <div className="mt-8 flex justify-center">
-            <Link
-              href="/contato?assunto=automacao"
-              className="rounded-full bg-[#0071e3] px-8 py-3.5 text-sm font-semibold text-white shadow-sm transition-all hover:bg-[#0077ed]"
-            >
-              Agendar conversa técnica
-            </Link>
-          </div>
         </div>
       </section>
     </div>

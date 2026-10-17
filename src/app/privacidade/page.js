@@ -2,9 +2,36 @@ import Link from "next/link";
 import { site } from "@/content/site.config";
 
 export const metadata = {
-  title: "Política de Privacidade | Darion Data",
+  title: "Política de Privacidade",
   description:
     "Transparência no tratamento de dados pessoais pela Darion Data, em conformidade com a LGPD (Lei nº 13.709/2018).",
+  alternates: {
+    canonical: "https://www.dariondata.com.br/privacidade",
+  },
+  openGraph: {
+    title: "Política de Privacidade | Darion Data",
+    description:
+      "Transparência no tratamento de dados pessoais pela Darion Data, em conformidade com a LGPD (Lei nº 13.709/2018).",
+    url: "https://www.dariondata.com.br/privacidade",
+    siteName: site.brandName,
+    locale: "pt_BR",
+    type: "website",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Darion Data",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Política de Privacidade | Darion Data",
+    description:
+      "Transparência no tratamento de dados pessoais pela Darion Data, em conformidade com a LGPD (Lei nº 13.709/2018).",
+    images: ["/og-image.png"],
+  },
 };
 
 export default function PrivacidadePage() {
@@ -24,6 +51,16 @@ export default function PrivacidadePage() {
         </div>
 
         <div className="mt-12 rounded-3xl border border-black/[0.06] bg-white p-8 sm:p-12 text-xs sm:text-sm leading-relaxed text-[#424245] space-y-8">
+          {/* Resumo em Linguagem Simples (Bloco D.5) */}
+          <div className="rounded-2xl border border-[#0071e3]/20 bg-[#f5f8ff] p-6 space-y-2 text-xs sm:text-sm text-[#1d1d1f]">
+            <h2 className="text-sm font-semibold text-[#0071e3] uppercase tracking-wider">
+              Resumo em linguagem simples
+            </h2>
+            <p className="leading-relaxed">
+              Coletamos apenas os dados que você preenche nos formulários de contato e SAC, além de registros técnicos de conexão e cookies autorizados por você. Usamos essas informações para responder às suas solicitações, elaborar propostas e manter o site seguro. Não comercializamos dados; o compartilhamento ocorre somente com provedores de infraestrutura necessários para a entrega das mensagens. Você pode acessar, corrigir ou excluir seus dados a qualquer momento pelo SAC. Quem responde como encarregado de privacidade é o Diego Ribeiro, pelo SAC e pelo e-mail suporte@dariondata.com.br.
+            </p>
+          </div>
+
           {/* Identificação do Controlador e Encarregado */}
           <section className="space-y-3">
             <h2 className="text-base font-semibold text-[#1d1d1f]">
@@ -54,7 +91,7 @@ export default function PrivacidadePage() {
             <h2 className="text-base font-semibold text-[#1d1d1f]">
               2. Dados que Coletamos
             </h2>
-            <p>Coletamos estritamente os dados necessários para o atendimento e a segurança do serviço:</p>
+            <p>Coletamos os dados necessários para o atendimento e a segurança do serviço:</p>
             <ul className="list-disc pl-5 space-y-2">
               <li>
                 <strong>Formulário de Contato Comercial:</strong> nome completo, empresa, cargo, e-mail corporativo, telefone ou WhatsApp (se informado), assunto do projeto, tamanho do ambiente (se informado) e mensagem descritiva.
@@ -98,7 +135,7 @@ export default function PrivacidadePage() {
               4. Compartilhamento de Dados
             </h2>
             <p>
-              A Darion Data não comercializa dados pessoais. O compartilhamento ocorre estritamente com provedores de infraestrutura e serviços de transmissão de e-mail estritamente necessários para a operação dos formulários, todos submetidos a acordos de confidencialidade e segurança, ou quando expressamente determinado por autoridade judicial ou regulatória competente.
+              A Darion Data não comercializa dados pessoais. O compartilhamento ocorre com provedores de infraestrutura e serviços de transmissão de e-mail necessários para a operação dos formulários, sujeitos aos termos e às políticas de privacidade desses provedores, ou quando expressamente determinado por autoridade judicial ou regulatória competente.
             </p>
           </section>
 
@@ -111,7 +148,7 @@ export default function PrivacidadePage() {
               Quando a Darion Data presta serviços de engenharia de redes, automação de processos, integração de sistemas ou análise de Shadow AI dentro do ambiente de uma organização contratante, <strong>o cliente é o controlador dos dados pessoais</strong> e a <strong>Darion Data atua como operadora</strong>.
             </p>
             <p>
-              Nesses cenários, atuamos estritamente sob as instruções lícitas do contratante, observando as cláusulas do contrato de prestação de serviços, termos de confidencialidade (NDA) e diretrizes de menor privilégio.
+              Nesses cenários, atuamos sob as instruções lícitas do contratante, observando as cláusulas do contrato de prestação de serviços, termos de confidencialidade (NDA) e diretrizes de menor privilégio.
             </p>
           </section>
 
@@ -121,11 +158,11 @@ export default function PrivacidadePage() {
               6. Retenção e Descarte
             </h2>
             <p>
-              Os dados pessoais são armazenados pelo tempo estritamente necessário para cumprir as finalidades para as quais foram coletados:
+              Os dados pessoais são armazenados pelo tempo necessário para cumprir as finalidades para as quais foram coletados:
             </p>
             <ul className="list-disc pl-5 space-y-1">
               <li>Registros de chamados do SAC são mantidos pelo tempo necessário à conclusão do atendimento e resguardo de obrigações legais e regulatórias.</li>
-              <li>Dados de propostas comerciais não contratadas são descartados ou anonimizados periodicamente.</li>
+              <li>Dados de propostas não contratadas são mantidos pelo tempo necessário ao relacionamento comercial e depois eliminados ou anonimizados.</li>
               <li>Registros de conexão ao site são mantidos pelos prazos legais previstos no Marco Civil da Internet.</li>
             </ul>
           </section>

@@ -3,9 +3,38 @@ import Image from "next/image";
 import { site } from "@/content/site.config";
 
 export const metadata = {
-  title: "Sobre a Darion Data | Liderança e Parceria Técnica",
+  title: {
+    absolute: "Sobre a Darion Data",
+  },
   description:
-    "Conheça a Darion Data, empresa de tecnologia sediada em Belo Horizonte com liderança técnica experiente em redes corporativas, Fortinet, automação e governança de IA.",
+    "Uma empresa nova, com experiência de campo. Conheça a Darion Data, nossa liderança técnica e a parceria Fortinet.",
+  alternates: {
+    canonical: "https://www.dariondata.com.br/sobre",
+  },
+  openGraph: {
+    title: "Sobre a Darion Data",
+    description:
+      "Uma empresa nova, com experiência de campo. Conheça a Darion Data, nossa liderança técnica e a parceria Fortinet.",
+    url: "https://www.dariondata.com.br/sobre",
+    siteName: site.brandName,
+    locale: "pt_BR",
+    type: "website",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Darion Data",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Sobre a Darion Data",
+    description:
+      "Uma empresa nova, com experiência de campo. Conheça a Darion Data, nossa liderança técnica e a parceria Fortinet.",
+    images: ["/og-image.png"],
+  },
 };
 
 const CERTIFICATIONS = [
@@ -33,8 +62,12 @@ export default function SobrePage() {
         </h1>
 
         <p className="mx-auto mt-6 max-w-3xl text-base sm:text-lg leading-relaxed text-[#6e6e73]">
-          A Darion Data foi aberta em {site.foundedYear} em {site.city} — {site.state}. Ainda não temos uma carteira de clientes para mostrar. O que mostramos é quem executa o trabalho, como ele é feito e o que sustenta a parceria técnica com o fabricante.
+          A Darion Data abriu em {site.foundedYear}, em {site.city} — {site.state}. Ainda não temos lista de clientes para mostrar, e preferimos dizer isso a inventar. O que podemos mostrar é quem faz o trabalho e como ele é feito.
         </p>
+
+        <div className="mt-4 text-xs italic text-[#0071e3]">
+          Confiança se constrói dizendo o que dá e o que não dá para fazer.
+        </div>
       </section>
 
       {/* Quem lidera */}
@@ -49,7 +82,7 @@ export default function SobrePage() {
                 Diego Ribeiro
               </h2>
               <p className="text-sm font-medium text-[#6e6e73] mt-1">
-                Responsável Técnico e Fundador
+                Fundador e responsável técnico
               </p>
               <div className="mt-4">
                 <a
@@ -68,15 +101,21 @@ export default function SobrePage() {
 
             <div className="lg:col-span-2 space-y-4 text-xs sm:text-sm leading-relaxed text-[#424245]">
               <p>
-                Com mais de 22 anos de experiência em infraestrutura de tecnologia da informação, gestão de serviços, computação em nuvem e liderança técnica de equipes, Diego coordenou a infraestrutura de TI por 12 anos e meio na Drive A Informática antes de fundar a Darion Data.
-              </p>
-              <p>
-                Sua atuação envolve vivência prática em redes corporativas híbridas, automação com scripts e infraestrutura como código, implementação de observabilidade e monitoramento contínuo, além de consultoria de governança contra o uso não autorizado de inteligência artificial (Shadow AI), mitigando riscos de vazamento de dados, exposição de propriedade intelectual e descumprimento da LGPD.
+                São mais de 22 anos em infraestrutura de TI, gestão de serviços e nuvem, 12 anos e meio deles coordenando a infraestrutura de uma empresa de tecnologia, a Drive A Informática. Passou por redes híbridas, automação com scripts e infraestrutura como código, monitoramento e governança do uso de IA.
               </p>
 
-              <div className="pt-4 border-t border-black/[0.06]">
+              <div className="rounded-2xl border border-black/[0.06] bg-[#fafafc] p-5 space-y-2">
+                <h3 className="text-xs font-semibold uppercase tracking-wider text-[#1d1d1f]">
+                  Por que isso importa para você
+                </h3>
+                <p className="text-xs text-[#515154] leading-relaxed">
+                  Quem conversa sobre o projeto é quem vai desenhá-lo e acompanhá-lo. Em troca, somos uma estrutura enxuta, e vamos dizer com clareza o que cabe no nosso tamanho.
+                </p>
+              </div>
+
+              <div className="pt-2">
                 <h3 className="text-xs font-semibold uppercase tracking-wider text-[#1d1d1f] mb-3">
-                  Certificações Técnicas Confirmadas
+                  Certificações confirmadas
                 </h3>
                 <div className="flex flex-wrap gap-2">
                   {CERTIFICATIONS.map((cert, idx) => (
@@ -99,21 +138,21 @@ export default function SobrePage() {
         </div>
       </section>
 
-      {/* Parceria Técnica */}
+      {/* Parceria Fortinet */}
       <section className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="rounded-3xl border border-black/[0.08] bg-[#f5f5f7] p-8 sm:p-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           <div className="max-w-2xl">
             <span className="text-xs font-semibold uppercase tracking-wider text-[#0071e3]">
-              Homologação Oficial
+              Parceria Fortinet
             </span>
             <h3 className="mt-1 text-xl sm:text-2xl font-semibold text-[#1d1d1f]">
-              Parceria Fortinet · Modelo Integrator
+              Modelo Integrator
             </h3>
             <p className="mt-2 text-xs sm:text-sm text-[#6e6e73] leading-relaxed">
-              A Darion Data foi aprovada no Fortinet Partner Program no modelo Integrator. Atuamos no desenho, na implantação, na configuração técnica e na sustentação de arquiteturas baseadas no Fortinet Security Fabric.
+              A Darion Data foi aprovada no programa de parceiros da Fortinet, no modelo Integrator.
             </p>
           </div>
-          {site.fortinet.badgePath && (
+          {site.fortinet.badgePath ? (
             <div className="shrink-0">
               <Image
                 src={site.fortinet.badgePath}
@@ -123,82 +162,75 @@ export default function SobrePage() {
                 className="h-10 w-auto"
               />
             </div>
-          )}
+          ) : null}
         </div>
       </section>
 
-      {/* Como começamos um projeto */}
+      {/* Como começamos */}
       <section className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="rounded-3xl border border-black/[0.08] bg-white p-8 sm:p-12 shadow-sm">
           <div className="max-w-2xl">
-            <span className="text-xs font-semibold uppercase tracking-wider text-[#0071e3]">
-              Relacionamento Comercial
-            </span>
-            <h2 className="mt-2 text-2xl sm:text-3xl font-semibold tracking-tight text-[#1d1d1f]">
-              Como começamos um projeto
+            <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-[#1d1d1f]">
+              Como começamos
             </h2>
-            <p className="mt-2 text-sm text-[#6e6e73]">
-              Previsibilidade e transparência técnica desde a primeira interação:
-            </p>
           </div>
 
           <div className="mt-8 grid gap-4 sm:grid-cols-3">
-            <div className="rounded-2xl border border-black/[0.06] bg-[#fafafc] p-5 text-xs text-[#515154]">
-              <span className="text-sm font-semibold text-[#1d1d1f] block mb-2">
-                1. Conversa técnica inicial
-              </span>
-              <p className="leading-relaxed">
-                Entendimento dos desafios atuais de rede, conectividade, processos manuais ou governança de dados.
+            <div className="rounded-2xl border border-black/[0.06] bg-[#fafafc] p-6 space-y-2">
+              <span className="text-xl font-bold text-[#0071e3]">1</span>
+              <h3 className="text-sm font-semibold text-[#1d1d1f]">Conversa</h3>
+              <p className="text-xs text-[#6e6e73] leading-relaxed">
+                Uma conversa para entender o cenário e o que está acontecendo na sua operação.
               </p>
             </div>
 
-            <div className="rounded-2xl border border-black/[0.06] bg-[#fafafc] p-5 text-xs text-[#515154]">
-              <span className="text-sm font-semibold text-[#1d1d1f] block mb-2">
-                2. Levantamento do cenário
-              </span>
-              <p className="leading-relaxed">
-                Análise da topologia, regras de firewall, dependências de sistemas e nível de maturidade do ambiente.
+            <div className="rounded-2xl border border-black/[0.06] bg-[#fafafc] p-6 space-y-2">
+              <span className="text-xl font-bold text-[#0071e3]">2</span>
+              <h3 className="text-sm font-semibold text-[#1d1d1f]">Levantamento</h3>
+              <p className="text-xs text-[#6e6e73] leading-relaxed">
+                Um levantamento do ambiente, dos links, das regras e dos pontos de atenção.
               </p>
             </div>
 
-            <div className="rounded-2xl border border-black/[0.06] bg-[#fafafc] p-5 text-xs text-[#515154]">
-              <span className="text-sm font-semibold text-[#1d1d1f] block mb-2">
-                3. Proposta com escopo definido
-              </span>
-              <p className="leading-relaxed">
-                Apresentação de escopo técnico objetivo, premissas de execução e critérios de entrega sem surpresas.
+            <div className="rounded-2xl border border-black/[0.06] bg-[#fafafc] p-6 space-y-2">
+              <span className="text-xl font-bold text-[#0071e3]">3</span>
+              <h3 className="text-sm font-semibold text-[#1d1d1f]">Proposta</h3>
+              <p className="text-xs text-[#6e6e73] leading-relaxed">
+                Uma proposta com escopo claro, em que o que está dentro e fora fica escrito.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Dados da Empresa */}
+      {/* Dados da empresa */}
       <section className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <div className="rounded-2xl border border-black/[0.06] bg-[#fafafc] p-6 text-xs text-[#6e6e73] space-y-1">
-          <p className="font-semibold text-[#1d1d1f] text-sm mb-2">Dados cadastrais da empresa</p>
-          <p>Razão Social: {site.legalName}</p>
-          <p>Nome Fantasia: {site.brandName} Soluções em Tecnologia</p>
-          <p>CNPJ: {site.cnpj}</p>
-          <p>Sede: {site.city} — {site.state}</p>
+        <div className="rounded-2xl border border-black/[0.06] bg-[#f5f5f7] p-6 text-xs text-[#6e6e73] flex flex-wrap items-center justify-between gap-4">
+          <div>
+            <span className="font-semibold text-[#1d1d1f] block">{site.legalName}</span>
+            <span>CNPJ: {site.cnpj} · {site.city} — {site.state}</span>
+          </div>
+          <div>
+            <span className="text-[11px] text-[#86868b]">Aberta em 25/09/2026</span>
+          </div>
         </div>
       </section>
 
-      {/* CTA Final */}
+      {/* Chamada Final */}
       <section className="bg-[#f5f5f7] py-20">
         <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
           <h2 className="text-3xl font-semibold tracking-tight text-[#1d1d1f] sm:text-4xl">
-            Vamos conversar sobre a infraestrutura da sua empresa?
+            Conte como está a sua rede hoje.
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-base text-[#6e6e73]">
-            Agende uma conversa técnica diretamente com quem executa o projeto.
+            A gente responde com franqueza se, e como, pode ajudar.
           </p>
           <div className="mt-8 flex justify-center">
             <Link
               href="/contato"
               className="rounded-full bg-[#0071e3] px-8 py-3.5 text-sm font-semibold text-white shadow-sm transition-all hover:bg-[#0077ed]"
             >
-              Agendar conversa técnica
+              Falar sobre o meu cenário
             </Link>
           </div>
         </div>

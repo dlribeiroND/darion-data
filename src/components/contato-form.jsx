@@ -111,7 +111,10 @@ export default function ContatoForm() {
 
       if (!response.ok) {
         setStatus("error");
-        setErrorMessage(data.error || "Não foi possível enviar a mensagem.");
+        setErrorMessage(
+          data.error ||
+            `Não conseguimos enviar agora, e o problema é nosso. Tente de novo em alguns minutos ou escreva para ${site.emailCommercial}.`
+        );
         return;
       }
 
@@ -122,7 +125,9 @@ export default function ContatoForm() {
       }
     } catch {
       setStatus("error");
-      setErrorMessage("Erro de conexão. Verifique sua rede e tente novamente.");
+      setErrorMessage(
+        `Não conseguimos enviar agora, e o problema é nosso. Tente de novo em alguns minutos ou escreva para ${site.emailCommercial}.`
+      );
     }
   }
 
@@ -135,16 +140,11 @@ export default function ContatoForm() {
           </svg>
         </div>
         <h3 className="text-xl font-semibold text-[#1d1d1f]">
-          Mensagem recebida com sucesso!
+          Recebemos sua mensagem.
         </h3>
         <p className="mt-2 text-sm text-[#515154] max-w-md mx-auto leading-relaxed">
-          Obrigado pelo contato. Analisaremos o cenário técnico da sua organização para responder com os próximos passos.
+          Respondemos em até 1 dia útil, pelo e-mail que você informou.
         </p>
-        {site.responseTimeCommercial && (
-          <p className="mt-3 text-xs font-medium text-emerald-700">
-            {site.responseTimeCommercial}
-          </p>
-        )}
         <div className="mt-6">
           <button
             type="button"
@@ -156,7 +156,7 @@ export default function ContatoForm() {
             }}
             className="rounded-full bg-[#1d1d1f] px-6 py-2 text-xs font-semibold text-white hover:bg-black transition-colors"
           >
-            Enviar outra solicitação
+            Enviar outra mensagem
           </button>
         </div>
       </div>
@@ -367,7 +367,7 @@ export default function ContatoForm() {
           disabled={status === "submitting"}
           className="w-full rounded-full bg-[#0071e3] px-6 py-3 text-xs font-semibold text-white shadow-sm transition-all hover:bg-[#0077ed] disabled:opacity-60"
         >
-          {status === "submitting" ? "Enviando solicitação..." : "Agendar conversa técnica"}
+          {status === "submitting" ? "Enviando mensagem..." : "Enviar mensagem"}
         </button>
       </div>
     </form>

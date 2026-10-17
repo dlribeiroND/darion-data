@@ -2,9 +2,36 @@ import Link from "next/link";
 import { site } from "@/content/site.config";
 
 export const metadata = {
-  title: "Compliance & Governança | Darion Data",
+  title: "Compliance",
   description:
     "Diretrizes de transparência, privacidade, termos de uso e práticas de segurança da informação da Darion Data Soluções em Tecnologia LTDA.",
+  alternates: {
+    canonical: "https://www.dariondata.com.br/compliance",
+  },
+  openGraph: {
+    title: "Compliance | Darion Data",
+    description:
+      "Diretrizes de transparência, privacidade, termos de uso e práticas de segurança da informação da Darion Data Soluções em Tecnologia LTDA.",
+    url: "https://www.dariondata.com.br/compliance",
+    siteName: site.brandName,
+    locale: "pt_BR",
+    type: "website",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Darion Data",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Compliance | Darion Data",
+    description:
+      "Diretrizes de transparência, privacidade, termos de uso e práticas de segurança da informação da Darion Data Soluções em Tecnologia LTDA.",
+    images: ["/og-image.png"],
+  },
 };
 
 export default function CompliancePage() {
@@ -127,7 +154,7 @@ export default function CompliancePage() {
             <div className="rounded-2xl border border-black/[0.06] bg-[#fafafc] p-4">
               <h3 className="font-semibold text-[#1d1d1f] mb-1">Princípio do Menor Privilégio (PoLP)</h3>
               <p className="leading-relaxed">
-                Colaboradores e prestadores acessam estritamente os sistemas e dados necessários para a execução de suas atividades técnicas homologadas.
+                Colaboradores e prestadores acessam apenas os sistemas e dados necessários para a execução de suas atividades técnicas homologadas.
               </p>
             </div>
 

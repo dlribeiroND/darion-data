@@ -55,7 +55,7 @@ export default function SiteHeader() {
             href="/contato"
             className="inline-flex items-center justify-center rounded-full bg-[#0071e3] px-4 py-1.5 text-xs font-medium text-white shadow-sm transition-all hover:bg-[#0077ed] active:scale-[0.98]"
           >
-            Agendar conversa técnica
+            Conte o seu cenário
           </Link>
         </div>
 
@@ -115,7 +115,7 @@ export default function SiteHeader() {
               onClick={() => setMenuOpen(false)}
               className="block w-full rounded-full bg-[#0071e3] px-4 py-2.5 text-center text-xs font-semibold text-white shadow-sm hover:bg-[#0077ed]"
             >
-              Agendar conversa técnica
+              Conte o seu cenário
             </Link>
           </div>
         </nav>

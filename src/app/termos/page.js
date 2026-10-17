@@ -2,9 +2,36 @@ import Link from "next/link";
 import { site } from "@/content/site.config";
 
 export const metadata = {
-  title: "Termos de Uso | Darion Data",
+  title: "Termos de Uso",
   description:
     "Termos e condições de uso do site institucional da Darion Data Soluções em Tecnologia LTDA.",
+  alternates: {
+    canonical: "https://www.dariondata.com.br/termos",
+  },
+  openGraph: {
+    title: "Termos de Uso | Darion Data",
+    description:
+      "Termos e condições de uso do site institucional da Darion Data Soluções em Tecnologia LTDA.",
+    url: "https://www.dariondata.com.br/termos",
+    siteName: site.brandName,
+    locale: "pt_BR",
+    type: "website",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Darion Data",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Termos de Uso | Darion Data",
+    description:
+      "Termos e condições de uso do site institucional da Darion Data Soluções em Tecnologia LTDA.",
+    images: ["/og-image.png"],
+  },
 };
 
 export default function TermosPage() {

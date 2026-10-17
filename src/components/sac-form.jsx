@@ -100,7 +100,10 @@ export default function SacForm() {
 
       if (!response.ok) {
         setStatus("error");
-        setErrorMessage(data.error || "Não foi possível registrar o atendimento.");
+        setErrorMessage(
+          data.error ||
+            `Não conseguimos enviar agora, e o problema é nosso. Tente de novo em alguns minutos ou escreva para ${site.emailSac}.`
+        );
         return;
       }
 
@@ -112,7 +115,9 @@ export default function SacForm() {
       }
     } catch {
       setStatus("error");
-      setErrorMessage("Erro de conexão. Verifique sua rede e tente novamente.");
+      setErrorMessage(
+        `Não conseguimos enviar agora, e o problema é nosso. Tente de novo em alguns minutos ou escreva para ${site.emailSac}.`
+      );
     }
   }
 
@@ -125,17 +130,14 @@ export default function SacForm() {
           </svg>
         </div>
         <h3 className="text-xl font-semibold text-[#1d1d1f]">
-          Atendimento registrado com sucesso!
+          Seu protocolo é {protocol}.
         </h3>
-        <p className="text-xs text-[#515154]">
-          Guarde o número de protocolo abaixo para acompanhamento da sua solicitação:
+        <p className="text-sm text-[#515154]">
+          Guarde este número. Respondemos em até 3 dias úteis.
         </p>
         <div className="inline-block rounded-xl border border-emerald-600/30 bg-white px-5 py-2.5 text-base font-bold tracking-wider text-emerald-800">
           {protocol}
         </div>
-        <p className="text-xs text-[#6e6e73] max-w-md mx-auto leading-relaxed">
-          Registramos sua solicitação com o protocolo acima. {site.responseTimeSac} Em caso de reclamação, retornamos formalmente com a conclusão do atendimento.
-        </p>
         <div className="pt-2">
           <button
             type="button"

@@ -4,9 +4,9 @@ export default function robots() {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/portal", "/api/"],
+        disallow: ["/api/"],
       },
     ],
-    sitemap: "https://dariondata.com.br/sitemap.xml",
+    sitemap: "https://www.dariondata.com.br/sitemap.xml",
   };
 }
