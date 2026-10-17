@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { CONTATO_ASSUNTOS, validateContatoForm } from "@/lib/contato-validation";
@@ -34,6 +34,42 @@ export default function ContatoForm() {
   const [errors, setErrors] = useState({});
   const [status, setStatus] = useState("idle"); // idle | submitting | success | error
   const [errorMessage, setErrorMessage] = useState("");
+  const phoneInputRef = useRef(null);
+  const itiRef = useRef(null);
+
+  useEffect(() => {
+    let itiInstance = null;
+    let isMounted = true;
+
+    import("intl-tel-input/intlTelInputWithUtils").then(({ default: intlTelInput }) => {
+      if (!isMounted || !phoneInputRef.current) return;
+
+      itiInstance = intlTelInput(phoneInputRef.current, {
+        initialCountry: "br",
+        separateDialCode: true,
+        autoPlaceholder: "polite",
+        strictMode: true,
+        countrySearch: true,
+      });
+      itiRef.current = itiInstance;
+
+      const updatePhone = () => {
+        if (!itiInstance || !phoneInputRef.current) return;
+        const fullNumber = itiInstance.getNumber() || phoneInputRef.current.value;
+        setValues((prev) => ({ ...prev, telefone: fullNumber }));
+      };
+
+      phoneInputRef.current.addEventListener("input", updatePhone);
+      phoneInputRef.current.addEventListener("countrychange", updatePhone);
+    });
+
+    return () => {
+      isMounted = false;
+      if (itiInstance) {
+        itiInstance.destroy();
+      }
+    };
+  }, []);
 
   function handleChange(e) {
     const { name, value, type, checked } = e.target;
@@ -49,7 +85,13 @@ export default function ContatoForm() {
   async function handleSubmit(e) {
     e.preventDefault();
 
-    const { valid, errors: fieldErrors, values: cleanValues } = validateContatoForm(values);
+    const currentPhone = itiRef.current
+      ? itiRef.current.getNumber() || phoneInputRef.current?.value || ""
+      : values.telefone;
+
+    const submissionValues = { ...values, telefone: currentPhone };
+
+    const { valid, errors: fieldErrors, values: cleanValues } = validateContatoForm(submissionValues);
     setErrors(fieldErrors);
     if (!valid) {
       return;
@@ -75,6 +117,9 @@ export default function ContatoForm() {
 
       setStatus("success");
       setValues(INITIAL_VALUES);
+      if (itiRef.current) {
+        itiRef.current.setNumber("");
+      }
     } catch {
       setStatus("error");
       setErrorMessage("Erro de conexão. Verifique sua rede e tente novamente.");
@@ -103,7 +148,12 @@ export default function ContatoForm() {
         <div className="mt-6">
           <button
             type="button"
-            onClick={() => setStatus("idle")}
+            onClick={() => {
+              setStatus("idle");
+              if (itiRef.current) {
+                itiRef.current.setNumber("");
+              }
+            }}
             className="rounded-full bg-[#1d1d1f] px-6 py-2 text-xs font-semibold text-white hover:bg-black transition-colors"
           >
             Enviar outra solicitação
@@ -211,23 +261,23 @@ export default function ContatoForm() {
         </div>
       </div>
 
-      {/* Grid: Telefone e Assunto */}
+      {/* Grid: Telefone com intl-tel-input e Assunto */}
       <div className="grid gap-4 sm:grid-cols-2">
         <div>
           <label htmlFor="telefone" className="block text-xs font-semibold text-[#1d1d1f]">
             Telefone ou WhatsApp <span className="text-[#86868b] font-normal">(opcional)</span>
           </label>
-          <input
-            id="telefone"
-            name="telefone"
-            type="tel"
-            value={values.telefone}
-            onChange={handleChange}
-            placeholder="(DDD) 99999-9999"
-            className={`mt-1.5 w-full rounded-xl border bg-white px-3.5 py-2.5 text-xs text-[#1d1d1f] shadow-xs outline-none transition-colors focus:border-[#0071e3] focus:ring-1 focus:ring-[#0071e3] ${
-              errors.telefone ? "border-red-500" : "border-black/[0.12]"
-            }`}
-          />
+          <div className="mt-1.5">
+            <input
+              id="telefone"
+              name="telefone"
+              type="tel"
+              ref={phoneInputRef}
+              className={`w-full rounded-xl border bg-white px-3.5 py-2.5 text-xs text-[#1d1d1f] shadow-xs outline-none transition-colors focus:border-[#0071e3] focus:ring-1 focus:ring-[#0071e3] ${
+                errors.telefone ? "border-red-500" : "border-black/[0.12]"
+              }`}
+            />
+          </div>
           {errors.telefone && <p className="mt-1 text-[11px] text-red-600">{errors.telefone}</p>}
         </div>
 
