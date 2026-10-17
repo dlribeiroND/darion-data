@@ -32,7 +32,7 @@ export default function SiteHeader() {
           className="flex items-center transition-opacity hover:opacity-85"
           onClick={() => setMenuOpen(false)}
         >
-          <BrandLogo size="h-7" />
+          <BrandLogo size="h-10" />
         </Link>
 
         {/* Navegação Principal Desktop */}

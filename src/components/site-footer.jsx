@@ -25,7 +25,7 @@ export default function SiteFooter() {
       <div className="mx-auto grid w-full max-w-6xl gap-10 px-4 py-12 sm:px-6 lg:grid-cols-4 lg:px-8">
         {/* Identificação da Empresa */}
         <div className="lg:col-span-1">
-          <BrandLogo size="h-7" />
+          <BrandLogo size="h-10" />
           <p className="mt-4 text-xs leading-relaxed text-[#6e6e73]">
             {site.legalName}
           </p>
