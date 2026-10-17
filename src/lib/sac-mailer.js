@@ -1,4 +1,5 @@
 import { SAC_TYPES } from "./sac-validation";
+import { site } from "@/content/site.config";
 
 function escapeHtml(str) {
   if (!str) return "";
@@ -10,17 +11,21 @@ function escapeHtml(str) {
     .replace(/'/g, "&#039;");
 }
 
-export async function sendSacMessage(values) {
+export function generateProtocol() {
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = String(now.getMonth() + 1).padStart(2, "0");
+  const day = String(now.getDate()).padStart(2, "0");
+  const random = Math.floor(1000 + Math.random() * 9000);
+  return `SAC-${year}${month}${day}-${random}`;
+}
+
+export async function sendSacMessage(values, protocol) {
   const apiKey =
     process.env.SAC_MAILER_API_KEY ||
-    process.env.RESEND_API_KEY ||
-    process.env.RESEND_APT_KEY;
-  if (!apiKey) {
-    throw new Error("SAC mailer não configurado: defina SAC_MAILER_API_KEY ou RESEND_API_KEY no arquivo de ambiente.");
-  }
+    process.env.RESEND_API_KEY;
 
-  const fallbackEmail = "diegolribeiro@gmail.com";
-  let toEmail = process.env.SAC_MAILER_TO || fallbackEmail;
+  const toEmail = process.env.SAC_MAILER_TO || site.emailSac;
   const fromEmail = process.env.SAC_MAILER_FROM || "Darion Data SAC <onboarding@resend.dev>";
 
   const tipoObj = SAC_TYPES.find((t) => t.value === values.tipo);
@@ -32,13 +37,15 @@ export async function sendSacMessage(values) {
     timeZone: "America/Sao_Paulo",
   }).format(new Date());
 
+  const safeProtocol = escapeHtml(protocol);
   const safeNome = escapeHtml(values.nome);
   const safeEmail = escapeHtml(values.email);
   const safeTelefone = escapeHtml(values.telefone || "Não informado");
+  const safeEmpresa = escapeHtml(values.empresa || "Não informado");
   const safeTipo = escapeHtml(tipoLabel);
   const safeMensagem = escapeHtml(values.mensagem).replace(/\n/g, "<br>");
 
-  const subject = `[SAC Darion Data] Novo contato: ${tipoLabel} — ${values.nome}`;
+  const subject = `[SAC Darion Data] Protocolo ${protocol} — ${tipoLabel}: ${values.nome}`;
 
   const htmlBody = `
 <!DOCTYPE html>
@@ -52,85 +59,56 @@ export async function sendSacMessage(values) {
     <tr>
       <td align="center">
         <table role="presentation" width="100%" max-width="600" style="max-width: 600px; background-color: #ffffff; border-radius: 16px; border: 1px solid rgba(0, 0, 0, 0.08); overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.04);">
-          <!-- Cabeçalho -->
           <tr>
             <td style="padding: 32px 32px 24px 32px; background: linear-gradient(135deg, #0a0a0c 0%, #1d1d1f 100%); color: #ffffff;">
               <div style="font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #2997ff; margin-bottom: 8px;">
-                Canal de SAC & Atendimento
+                Canal Aberto ao Público · SAC
               </div>
-              <h1 style="margin: 0; font-size: 22px; font-weight: 600; color: #ffffff; line-height: 1.3;">
-                Nova Mensagem Recebida
+              <h1 style="margin: 0; font-size: 20px; font-weight: 600; color: #ffffff; line-height: 1.3;">
+                Protocolo: ${safeProtocol}
               </h1>
               <p style="margin: 6px 0 0 0; font-size: 13px; color: #a1a1a6;">
                 Recebida em ${escapeHtml(nowFormatted)}
               </p>
             </td>
           </tr>
-
-          <!-- Dados do Contato -->
           <tr>
             <td style="padding: 28px 32px;">
               <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="margin-bottom: 24px;">
                 <tr>
-                  <td style="padding: 8px 0; border-bottom: 1px solid #f0f0f2; font-size: 13px; color: #86868b; width: 140px;">
-                    Nome completo
-                  </td>
-                  <td style="padding: 8px 0; border-bottom: 1px solid #f0f0f2; font-size: 14px; font-weight: 600; color: #1d1d1f;">
-                    ${safeNome}
-                  </td>
+                  <td style="padding: 8px 0; border-bottom: 1px solid #f0f0f2; font-size: 13px; color: #86868b; width: 140px;">Protocolo</td>
+                  <td style="padding: 8px 0; border-bottom: 1px solid #f0f0f2; font-size: 14px; font-weight: 700; color: #0071e3;">${safeProtocol}</td>
                 </tr>
                 <tr>
-                  <td style="padding: 8px 0; border-bottom: 1px solid #f0f0f2; font-size: 13px; color: #86868b;">
-                    E-mail
-                  </td>
-                  <td style="padding: 8px 0; border-bottom: 1px solid #f0f0f2; font-size: 14px; color: #0071e3;">
-                    <a href="mailto:${safeEmail}" style="color: #0071e3; text-decoration: none;">${safeEmail}</a>
-                  </td>
+                  <td style="padding: 8px 0; border-bottom: 1px solid #f0f0f2; font-size: 13px; color: #86868b;">Nome completo</td>
+                  <td style="padding: 8px 0; border-bottom: 1px solid #f0f0f2; font-size: 14px; font-weight: 600; color: #1d1d1f;">${safeNome}</td>
                 </tr>
                 <tr>
-                  <td style="padding: 8px 0; border-bottom: 1px solid #f0f0f2; font-size: 13px; color: #86868b;">
-                    Telefone
-                  </td>
-                  <td style="padding: 8px 0; border-bottom: 1px solid #f0f0f2; font-size: 14px; color: #1d1d1f;">
-                    ${safeTelefone}
-                  </td>
+                  <td style="padding: 8px 0; border-bottom: 1px solid #f0f0f2; font-size: 13px; color: #86868b;">E-mail</td>
+                  <td style="padding: 8px 0; border-bottom: 1px solid #f0f0f2; font-size: 14px; color: #0071e3;"><a href="mailto:${safeEmail}" style="color: #0071e3; text-decoration: none;">${safeEmail}</a></td>
                 </tr>
                 <tr>
-                  <td style="padding: 8px 0; border-bottom: 1px solid #f0f0f2; font-size: 13px; color: #86868b;">
-                    Área de interesse
-                  </td>
-                  <td style="padding: 8px 0; border-bottom: 1px solid #f0f0f2; font-size: 14px; font-weight: 500; color: #1d1d1f;">
-                    <span style="display: inline-block; background-color: #f5f5f7; border: 1px solid #e5e5ea; border-radius: 6px; padding: 2px 8px; font-size: 12px;">
-                      ${safeTipo}
-                    </span>
-                  </td>
+                  <td style="padding: 8px 0; border-bottom: 1px solid #f0f0f2; font-size: 13px; color: #86868b;">Telefone</td>
+                  <td style="padding: 8px 0; border-bottom: 1px solid #f0f0f2; font-size: 14px; color: #1d1d1f;">${safeTelefone}</td>
+                </tr>
+                <tr>
+                  <td style="padding: 8px 0; border-bottom: 1px solid #f0f0f2; font-size: 13px; color: #86868b;">Empresa</td>
+                  <td style="padding: 8px 0; border-bottom: 1px solid #f0f0f2; font-size: 14px; color: #1d1d1f;">${safeEmpresa}</td>
+                </tr>
+                <tr>
+                  <td style="padding: 8px 0; border-bottom: 1px solid #f0f0f2; font-size: 13px; color: #86868b;">Tipo da solicitação</td>
+                  <td style="padding: 8px 0; border-bottom: 1px solid #f0f0f2; font-size: 14px; font-weight: 600; color: #1d1d1f;">${safeTipo}</td>
                 </tr>
               </table>
-
-              <!-- Mensagem -->
               <div style="margin-top: 16px;">
-                <div style="font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: #86868b; margin-bottom: 8px;">
-                  Mensagem enviada
-                </div>
-                <div style="background-color: #fafafc; border: 1px solid #e5e5ea; border-radius: 12px; padding: 18px; font-size: 14px; line-height: 1.6; color: #333336;">
-                  ${safeMensagem}
-                </div>
-              </div>
-
-              <!-- Ação rápida -->
-              <div style="margin-top: 28px; text-align: center;">
-                <a href="mailto:${safeEmail}?subject=Re:%20${encodeURIComponent(subject)}" style="display: inline-block; background-color: #0071e3; color: #ffffff; text-decoration: none; font-size: 13px; font-weight: 500; padding: 10px 24px; border-radius: 9999px;">
-                  Responder para ${safeNome}
-                </a>
+                <div style="font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: #86868b; margin-bottom: 8px;">Mensagem enviada</div>
+                <div style="background-color: #fafafc; border: 1px solid #e5e5ea; border-radius: 12px; padding: 18px; font-size: 14px; line-height: 1.6; color: #333336;">${safeMensagem}</div>
               </div>
             </td>
           </tr>
-
-          <!-- Rodapé do E-mail -->
           <tr>
             <td style="padding: 20px 32px; background-color: #f5f5f7; border-top: 1px solid rgba(0, 0, 0, 0.06); font-size: 11px; color: #86868b; text-align: center;">
-              Mensagem enviada via formulário institucional do site <a href="https://dariondata.com.br" style="color: #6e6e73; text-decoration: underline;">Darion Data</a>.<br>
-              Você pode responder diretamente a este e-mail para contatar o remetente.
+              Mensagem registrada via canal de SAC do site <a href="https://dariondata.com.br" style="color: #6e6e73; text-decoration: underline;">Darion Data</a>.
             </td>
           </tr>
         </table>
@@ -141,7 +119,15 @@ export async function sendSacMessage(values) {
 </html>
   `.trim();
 
-  let response = await fetch("https://api.resend.com/emails", {
+  if (!apiKey) {
+    if (process.env.NODE_ENV === "development") {
+      console.log(`[sac-mailer dev mock] E-mail para ${toEmail}:\nAssunto: ${subject}`);
+      return { id: "dev-mock-id" };
+    }
+    throw new Error("Serviço de envio de e-mail não configurado no servidor.");
+  }
+
+  const response = await fetch("https://api.resend.com/emails", {
     method: "POST",
     headers: {
       Authorization: `Bearer ${apiKey}`,
@@ -156,27 +142,7 @@ export async function sendSacMessage(values) {
     }),
   });
 
-  let responseData = await response.json();
-
-  // Se o Resend recusar por restrição de domínio não verificado, tenta entregar na conta do proprietário
-  if (!response.ok && toEmail !== fallbackEmail && responseData?.message?.includes("only send testing emails")) {
-    console.warn(`[sac-mailer] Domínio ainda não verificado no Resend para '${toEmail}'. Redirecionando entrega para '${fallbackEmail}'...`);
-    response = await fetch("https://api.resend.com/emails", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${apiKey}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        from: "Darion Data SAC <onboarding@resend.dev>",
-        to: [fallbackEmail],
-        reply_to: values.email,
-        subject,
-        html: htmlBody,
-      }),
-    });
-    responseData = await response.json();
-  }
+  const responseData = await response.json();
 
   if (!response.ok) {
     const errorMsg = responseData?.message || responseData?.error || "Falha ao enviar e-mail via Resend.";

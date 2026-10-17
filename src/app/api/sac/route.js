@@ -1,15 +1,12 @@
 import { NextResponse } from "next/server";
 import { validateSacForm } from "@/lib/sac-validation";
-import { sendSacMessage } from "@/lib/sac-mailer";
+import { generateProtocol, sendSacMessage } from "@/lib/sac-mailer";
 
 export const dynamic = "force-dynamic";
 
 const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
 const RATE_LIMIT_MAX_REQUESTS = 5;
 
-// Armazenamento em memória: reinicia a cada deploy/restart e não é
-// compartilhado entre instâncias. Suficiente como mitigação básica de
-// spam; se o tráfego crescer, mover para um rate limiter externo.
 const requestLog = new Map();
 
 function isRateLimited(ip) {
@@ -45,10 +42,11 @@ export async function POST(request) {
     return NextResponse.json({ error: "Requisição inválida." }, { status: 400 });
   }
 
-  // Honeypot: campo invisível para usuários reais. Se vier preenchido,
-  // finge sucesso para não sinalizar ao bot que foi bloqueado.
+  const protocol = generateProtocol();
+
+  // Honeypot anti-spam
   if (typeof body.website === "string" && body.website.trim() !== "") {
-    return NextResponse.json({ ok: true });
+    return NextResponse.json({ ok: true, protocol });
   }
 
   const { valid, errors, values } = validateSacForm(body);
@@ -57,16 +55,16 @@ export async function POST(request) {
   }
 
   try {
-    await sendSacMessage(values);
+    await sendSacMessage(values, protocol);
   } catch (error) {
-    console.error("[sac] falha ao enviar mensagem:", error.message);
+    console.error("[sac] Falha ao enviar mensagem:", error.message);
     return NextResponse.json(
       {
-        error: error.message || "Não foi possível enviar sua mensagem agora. Tente novamente mais tarde.",
+        error: error.message || "Não foi possível registrar seu atendimento no momento. Tente novamente mais tarde.",
       },
       { status: 503 }
     );
   }
 
-  return NextResponse.json({ ok: true });
+  return NextResponse.json({ ok: true, protocol });
 }

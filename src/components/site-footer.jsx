@@ -1,101 +1,155 @@
+"use client";
+
 import Link from "next/link";
-import { NAV_LINKS } from "@/lib/nav-links";
+import { site } from "@/content/site.config";
 import BrandLogo from "@/components/brand-logo";
+import { getWhatsAppUrl } from "@/components/whatsapp-button";
 
 export default function SiteFooter() {
-  const year = new Date().getFullYear();
+  const whatsappUrl = getWhatsAppUrl();
+
+  const handleOpenCookies = (e) => {
+    e.preventDefault();
+    window.dispatchEvent(new Event("open-cookie-banner"));
+  };
 
   return (
     <footer className="border-t border-black/[0.06] bg-[#f5f5f7] text-[#86868b]">
-      {/* Disclaimer / Rodapé institucional estilo Apple */}
+      {/* Nota Única de Marcas Registradas */}
       <div className="mx-auto max-w-6xl px-4 pt-10 pb-6 text-[11px] leading-relaxed text-[#86868b] sm:px-6 lg:px-8 border-b border-black/[0.06]">
         <p>
-          1. Fortinet, FortiGate, FortiAnalyzer, FortiManager e Fortinet Security Fabric são marcas registradas de Fortinet, Inc. A Darion Data projeta, integra e orquestra soluções de infraestrutura e cibersegurança alinhadas às melhores práticas e arquiteturas de mercado.
-        </p>
-        <p className="mt-2">
-          2. A automação agêntica e as políticas de segurança são customizadas de acordo com as necessidades e conformidades regulatórias (como LGPD e ISO 27001) de cada organização.
+          Fortinet®, FortiGate®, FortiManager®, FortiAnalyzer®, FortiSwitch®, FortiAP® e Fortinet Security Fabric são marcas registradas ou marcas da Fortinet, Inc. e/ou de suas afiliadas. A Darion Data é parceira Fortinet no modelo Integrator.
         </p>
       </div>
 
       <div className="mx-auto grid w-full max-w-6xl gap-10 px-4 py-12 sm:px-6 lg:grid-cols-4 lg:px-8">
+        {/* Identificação da Empresa */}
         <div className="lg:col-span-1">
           <BrandLogo size="h-7" />
-          <p className="mt-4 max-w-xs text-xs leading-relaxed text-[#6e6e73]">
-            Automação de processos, integração de sistemas e redes corporativas com alta escalabilidade potencializando equipes e o seu negócio, sustentado por conceitos de cibersegurança fortinet.
+          <p className="mt-4 text-xs leading-relaxed text-[#6e6e73]">
+            {site.legalName}
+          </p>
+          <p className="mt-1 text-xs text-[#6e6e73]">
+            CNPJ: {site.cnpj}
+          </p>
+          <p className="text-xs text-[#6e6e73]">
+            {site.city} — {site.state}
           </p>
         </div>
 
+        {/* Serviços e Especialidades */}
         <div>
           <h3 className="text-xs font-semibold text-[#1d1d1f]">
-            Soluções & Tecnologia
+            Frentes de Atuação
           </h3>
           <ul className="mt-3.5 space-y-2.5 text-xs text-[#6e6e73]">
             <li>
-              <Link href="/solucoes" className="transition-colors hover:text-[#0071e3]">
-                Automação de Processos
+              <Link href="/redes-seguranca" className="transition-colors hover:text-[#0071e3]">
+                Redes & Segurança
               </Link>
             </li>
             <li>
-              <Link href="/solucoes" className="transition-colors hover:text-[#0071e3]">
-                Agentes de IA & Produtividade
+              <Link href="/automacao" className="transition-colors hover:text-[#0071e3]">
+                Automação & IA
               </Link>
             </li>
             <li>
-              <Link href="/solucoes" className="transition-colors hover:text-[#0071e3]">
-                Integração de Sistemas
+              <Link href="/shadow-ai" className="transition-colors hover:text-[#0071e3]">
+                Governança de IA (Shadow AI)
               </Link>
             </li>
             <li>
-              <Link href="/seguranca" className="transition-colors hover:text-[#0071e3]">
-                Redes & Cibersegurança
+              <Link href="/sobre" className="transition-colors hover:text-[#0071e3]">
+                Sobre a Empresa
               </Link>
             </li>
           </ul>
         </div>
 
+        {/* Institucional & Contato Comercial */}
         <div>
           <h3 className="text-xs font-semibold text-[#1d1d1f]">
-            Navegação
+            Comercial & Projetos
           </h3>
           <ul className="mt-3.5 space-y-2.5 text-xs text-[#6e6e73]">
-            {NAV_LINKS.map((link) => (
-              <li key={link.href}>
-                <Link href={link.href} className="transition-colors hover:text-[#0071e3]">
-                  {link.label}
-                </Link>
+            <li>
+              <Link href="/contato" className="transition-colors hover:text-[#0071e3]">
+                Agendar conversa técnica
+              </Link>
+            </li>
+            <li className="text-[#6e6e73]">
+              <a href={`mailto:${site.emailCommercial}`} className="hover:text-[#0071e3]">
+                {site.emailCommercial}
+              </a>
+            </li>
+            {site.phoneDisplay && (
+              <li className="text-[#6e6e73]">{site.phoneDisplay}</li>
+            )}
+            {whatsappUrl && (
+              <li>
+                <a
+                  href={whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-emerald-700 hover:underline"
+                >
+                  WhatsApp Comercial
+                </a>
               </li>
-            ))}
+            )}
           </ul>
         </div>
 
+        {/* SAC e Atendimento ao Público */}
         <div>
           <h3 className="text-xs font-semibold text-[#1d1d1f]">
-            Atendimento
+            SAC & Canal Aberto
           </h3>
           <ul className="mt-3.5 space-y-2.5 text-xs text-[#6e6e73]">
             <li>
               <Link href="/sac" className="transition-colors hover:text-[#0071e3]">
-                Canal de SAC & Contato
+                SAC (Atendimento ao Público)
               </Link>
             </li>
-            <li className="text-[#86868b]">suporte@dariondata.com.br</li>
-            <li className="text-[#86868b]">dariondata.com.br</li>
+            <li className="text-[#6e6e73]">
+              <a href={`mailto:${site.emailSac}`} className="hover:text-[#0071e3]">
+                {site.emailSac}
+              </a>
+            </li>
+            <li>
+              <Link href="/compliance" className="transition-colors hover:text-[#0071e3]">
+                Compliance & Governança
+              </Link>
+            </li>
           </ul>
         </div>
       </div>
 
+      {/* Linha Inferior com Políticas e Direitos */}
       <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 border-t border-black/[0.06] px-4 py-6 text-xs text-[#86868b] sm:flex-row sm:px-6 lg:px-8">
         <div>
-          Copyright © {year} Darion Data. Todos os direitos reservados.
+          © {site.foundedYear} {site.legalName}
         </div>
-        <div className="flex gap-6 text-[11px]">
-          <Link href="/compliance" className="hover:text-[#1d1d1f] transition-colors">
+        <div className="flex flex-wrap items-center gap-5 text-[11px]">
+          <Link href="/privacidade" className="hover:text-[#1d1d1f] transition-colors">
             Privacidade
           </Link>
-          <span className="hover:text-[#1d1d1f] cursor-pointer">Termos de Uso</span>
-          <Link href="/compliance" className="hover:text-[#1d1d1f] transition-colors">
-            Segurança & Conformidade
+          <Link href="/termos" className="hover:text-[#1d1d1f] transition-colors">
+            Termos de Uso
           </Link>
+          <Link href="/compliance" className="hover:text-[#1d1d1f] transition-colors">
+            Compliance
+          </Link>
+          <Link href="/sac" className="hover:text-[#1d1d1f] transition-colors">
+            SAC
+          </Link>
+          <button
+            type="button"
+            onClick={handleOpenCookies}
+            className="text-[#86868b] hover:text-[#1d1d1f] transition-colors underline"
+          >
+            Gerenciar cookies
+          </button>
         </div>
       </div>
     </footer>

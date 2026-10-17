@@ -1,6 +1,5 @@
-// Textura clean e luminosa inspirada no design da Apple:
-// Iluminação suave de estúdio, grid sutil de micro-linhas e halos difusos translúcidos.
-// Puramente decorativo (aria-hidden) com respeito a prefers-reduced-motion.
+// Textura geométrica suave para o plano de fundo.
+// Elementos decorativos (aria-hidden).
 
 export default function TechBackground() {
   return (

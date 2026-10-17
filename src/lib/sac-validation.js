@@ -1,9 +1,10 @@
 export const SAC_TYPES = [
-  { value: "seguranca", label: "Redes & Cibersegurança (Conceito Fortinet)" },
-  { value: "automacao", label: "Automação de Processos & Agentes de IA" },
-  { value: "contato", label: "Contato comercial e/ou consultoria" },
+  { value: "duvida", label: "Dúvida" },
   { value: "sugestao", label: "Sugestão" },
   { value: "reclamacao", label: "Reclamação" },
+  { value: "elogio", label: "Elogio" },
+  { value: "privacidade", label: "Privacidade e dados pessoais (LGPD)" },
+  { value: "outro", label: "Outro" },
 ];
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -13,8 +14,10 @@ export function validateSacForm(data) {
   const nome = (data.nome ?? "").trim();
   const email = (data.email ?? "").trim();
   const telefone = (data.telefone ?? "").trim();
+  const empresa = (data.empresa ?? "").trim();
   const tipo = data.tipo ?? "";
   const mensagem = (data.mensagem ?? "").trim();
+  const consentimento = !!data.consentimento;
 
   if (nome.length < 2 || nome.length > 120) {
     errors.nome = "Informe seu nome completo.";
@@ -26,22 +29,26 @@ export function validateSacForm(data) {
 
   if (telefone.length > 0) {
     const digitsOnly = telefone.replace(/\D/g, "");
-    if (digitsOnly.length < 7 || digitsOnly.length > 16 || !/^\+?[0-9\s\-().]{7,25}$/.test(telefone)) {
-      errors.telefone = "Informe um telefone válido com código do país (ex.: +55...).";
+    if (digitsOnly.length < 7 || digitsOnly.length > 16) {
+      errors.telefone = "Informe um telefone válido.";
     }
   }
 
   if (!SAC_TYPES.some((option) => option.value === tipo)) {
-    errors.tipo = "Selecione o tipo de contato.";
+    errors.tipo = "Selecione o tipo da solicitação.";
   }
 
   if (mensagem.length < 10 || mensagem.length > 4000) {
     errors.mensagem = "A mensagem deve ter entre 10 e 4000 caracteres.";
   }
 
+  if (!consentimento) {
+    errors.consentimento = "É necessário concordar com os termos de privacidade para envio do atendimento.";
+  }
+
   return {
     valid: Object.keys(errors).length === 0,
     errors,
-    values: { nome, email, telefone, tipo, mensagem },
+    values: { nome, email, telefone, empresa, tipo, mensagem, consentimento },
   };
 }
