@@ -79,10 +79,10 @@ export default function Home() {
         </div>
 
         <h1 className="mt-6 text-4xl font-semibold tracking-tight text-[#1d1d1f] sm:text-5xl lg:text-6xl">
-          Rede e segurança que dão sossego
+          Redes corporativas pensadas e calculadas
           <br />
           <span className="bg-gradient-to-r from-[#0071e3] via-[#0077ed] to-[#43b5ff] bg-clip-text text-transparent">
-            a quem responde pela operação.
+            individualmente de forma exclusiva para cada cliente.
           </span>
         </h1>
 
