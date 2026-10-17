@@ -49,7 +49,7 @@ export default function ContatoPage() {
             Conte o seu cenário.
           </h1>
           <p className="mt-3 text-base leading-relaxed text-[#6e6e73]">
-            Pode ser vago: &ldquo;a rede está lenta&rdquo;, &ldquo;vamos trocar o firewall&rdquo;, &ldquo;quero saber o que a equipe usa de IA&rdquo;. A gente começa daí. Respondemos em até 1 dia útil, e a primeira conversa serve para entender se faz sentido seguir.
+            Pode ser vago: &ldquo;a rede está lenta&rdquo;, &ldquo;vamos trocar o firewall&rdquo;, &ldquo;quero saber o que a equipe usa de IA&rdquo;. A gente começa daí. Respondemos em até 1 dia útil e a primeira conversa serve para entender se faz sentido seguir.
           </p>
         </div>
 
